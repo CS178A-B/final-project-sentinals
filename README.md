@@ -1,68 +1,30 @@
-# CS178A-B-Template
+# Facial Recognition to Run in less than 6 steps!!
+   To run in Linux, Follow these Steps
+Steps:
+1. First Open Command Line
+2. Type cd filename.py wherever you save it on you computer
+3. Then in filename type python filename.py 
+4. Boom! There your camera should show your face that it is being recognized.
+5. To exit out of the program press Escape Key
+That's all!
 
-## Table of Contents
-- [Overview](#overview)
-- [Usage](#usage)
-- [How To Run](#how-to-run)
-- [Diagrams](#diagrams)
-- [Dependencies](#dependencies)
+Requirements:
+1. You need a PC/Desktop that runs on Linux. 
+2. Download OpenCV2
+https://pypi.org/project/opencv-python/
+3. Get the face_cascade file from this github or create your own include it in your directory folder
+https://github.com/adarsh1021/facedetection/blob/master/haarcascade_frontalface_default.xml
+4. Find any image (person or anime is fine) that ends with .png, jpg, jpeg, etc.
+5. Include this image in the folder directory.
+6. Need to install this sudo apt-get install libopencv-dev python-opencv in the command line
+7. Install pip in order to use openCV2 -> python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose and pip install opencv-python
+8. Both commands run those in your home directory i.e Desktop, Documents, etc.
+9. Upgrade pip just in case of errors -> pip install --upgrade pip
+10. Or other option download anaconda https://docs.anaconda.com/anaconda/install/linux/ Follow the instructions on the website
+11. Then go back to step 2 to follow rest of instructions and OpenCV2 should be install through anaconda.
+12. Voila! You should be good to run and play around with the facial recognition. (If there is a step missing, then repeat process once more or do sudo apt-update and sudo apt-upgrade on command line to check your operating system.
 
-## Overview
-<Include project description?
-
-## Team
-<a href="https://github.com/msalloum" target="_blank"><img src="https://avatars3.githubusercontent.com/u/1790819?s=400&v=4" align="left" height="30px">Mariam Salloum </a>
-
-## Usage
-Demo: <Link to youtube video>
-
-<Screenshot of application>
-
-## How To Run
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Diagrams
-
-Sequence Diagram
-
-Frontend Structure
-
-
-Overall System Diagram
-
-## Dependencies
-Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
+References: https://github.com/adarsh1021/facedetection
+                                                          https://stackoverflow.com/questions/21596281/how-does-one-convert-a-grayscale-image-to-rgb-in-opencv-python (Used for converting grayscale image to rgb)
+https://pypi.org/project/opencv-python/
 
