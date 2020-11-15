@@ -9,7 +9,7 @@ Steps:
 That's all!
 
 Requirements:
-1. You need a PC/Desktop that runs on Linux. 
+1. You need a PC/Desktop that runs on Linux or Download Ubuntu on Windows. Either works.
 2. Download OpenCV2
 https://pypi.org/project/opencv-python/ , If the command from the link doesn't work, run this command sudo apt install python3-opencv. Doing so all you need to install is libopencv-dev for step 6. 
 3. Get the face_cascade file from this github or create your own include it in your directory folder
@@ -21,7 +21,7 @@ https://github.com/adarsh1021/facedetection/blob/master/haarcascade_frontalface_
 8. Both commands run those in your home directory i.e Desktop, Documents, etc.
 9. Upgrade pip just in case of errors -> pip install --upgrade pip
 10. Or other option download anaconda https://docs.anaconda.com/anaconda/install/linux/ Follow the instructions on the website
-11. Then go back to step 2 to follow rest of instructions and OpenCV2 should be install through anaconda.
+11. Then go back to step 2 to follow rest of instructions and OpenCV2 should be install through anaconda. (Optional) Make an python environment to save your dependencies, saves time.
 12. Voila! You should be good to run and play around with the facial recognition. (If there is a step missing, then repeat process once more or do sudo apt-update and sudo apt-upgrade on command line to check your operating system.
 
 References: https://github.com/adarsh1021/facedetection
