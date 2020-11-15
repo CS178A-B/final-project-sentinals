@@ -1,4 +1,4 @@
-# CS178A-B-Template
+# CS178A-B-Template: Nerf Sentry
 
 ## Table of Contents
 - [Overview](#overview)
@@ -8,10 +8,18 @@
 - [Dependencies](#dependencies)
 
 ## Overview
-<Include project description?
+Our project is an embedded system implementation that that utilizes microcontrollers, servos, motors, a camera, and a Nerf blaster. Put together, we have a Nerf Sentry that fires upon a target upon detecting the presence of any persons.
 
 ## Team
 <a href="https://github.com/msalloum" target="_blank"><img src="https://avatars3.githubusercontent.com/u/1790819?s=400&v=4" align="left" height="30px">Mariam Salloum </a>
+
+<a href="https://github.com/eduardor626" target="_blank"><img src="https://avatars1.githubusercontent.com/u/33262466?s=400&u=c6b16422f4524bd8951a4989a7c85fbc6c010f84&v=4" align="left" height="30px">Eduardo Rocha</a>
+
+<a href="https://github.com/B-Tran" target="_blank"><img src="https://avatars0.githubusercontent.com/u/43649007?s=400&v=4" align="left" height="30px">Brandon Tran </a>
+
+<a href="https://github.com/sfazli96" target="_blank"><img src="https://avatars2.githubusercontent.com/u/43709736?s=400&v=4" align="left" height="30px">Sameh Fazli </a>
+
+<a href="https://github.com/LukeTheChang" target="_blank"><img src="https://avatars3.githubusercontent.com/u/43716206?s=400&v=4" align="left" height="30px">Luccas Chang </a>
 
 ## Usage
 Demo: <Link to youtube video>
