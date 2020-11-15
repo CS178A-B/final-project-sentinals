@@ -70,8 +70,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Sequence Diagram
 
-Frontend Structure
+Frontend Structure:
 
+Being an embedded system project, we do not have a graphical user interface or anything of that sort. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300"/>
 
 Overall System Diagram
 
