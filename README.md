@@ -78,6 +78,8 @@ Being an embedded system project, we do not have a graphical user interface or a
 
 Overall System Diagram
 
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image4.jpg" width="300" height="300"/>
+
 ## Dependencies
 Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
 
