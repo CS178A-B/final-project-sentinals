@@ -70,6 +70,16 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### Sequence Diagram:
 
+The following two are state machines that we are able to implement to some extent
+
+* State Machine Sensor Controller:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image1.jpg" height="300"/>
+
+* State Machine for Raspberry Pi:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image3.jpg" height="300"/>
+
 ### Frontend Structure:
 
 Being an embedded system project, we do not have a graphical user interface or anything of that sort. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
