@@ -2,32 +2,31 @@
 
 int Relay =2; // Digital Pin D2
 Servo myservo;  // create servo object to control a servo
-bool Flag = false;
-bool Shoot = false;
-bool Done = false;
-int inPin = 7;   // choose the input pin (for a pushbutton)
-int ledpin = 13;
+bool Flag = false; // flag to signal motor
+bool Shoot = false; // flag to signal pull trigger
+bool Done = false; // flag to signal the shot is complete
+int inPin = 7;   // choose the input pin (for a buttonpress)
+int ledpin = 13; // output pin for debugging when initializing system
 
-uint32_t timeLastTransition = 0;
-
-
+uint32_t timeLastTransition = 0; //motor startup time
 
 void setup() {
   Serial.begin(115200);
   pinMode(Relay,OUTPUT); //declare Relay as output
 
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-  pinMode(inPin, INPUT);    // declare pushbutton as input
-  pinMode(ledpin,OUTPUT);
+  pinMode(inPin, INPUT);    // declare button as input
+  pinMode(ledpin,OUTPUT);  // declare led output for debugging
 
 }
 
 
 void SM_Driver(bool reset = false){
+
+   //States
     static enum {START, WAIT, START_MOTOR, START_SHOOT} state = START;
     const uint32_t RELAY_DELAY = 3000;  //3sec
     static int button = 0;
-
 
     switch(state)
     {
@@ -92,6 +91,7 @@ void SM_Driver(bool reset = false){
 void SM_Relay(bool reset = false)
 {
 //  const uint32_t RELAY_DELAY = 5000;  //5sec
+  //States
   static enum {OFF, ON} state = OFF;
 //  static uint32_t timeLastTransition = 0;
   
@@ -104,7 +104,7 @@ void SM_Relay(bool reset = false)
 
   switch(state)
   {
-    case OFF: //toggle relay
+    case OFF: //Motor is turned off
     {
       digitalWrite(Relay,LOW);
       if(Flag == true){
@@ -112,7 +112,7 @@ void SM_Relay(bool reset = false)
       }
       break;
     }
-    case ON:  //wait for the delay period
+    case ON:  //Motor is turned on 
     {
       digitalWrite(Relay,HIGH);
       if(Flag == false)
@@ -134,10 +134,10 @@ void SM_Relay(bool reset = false)
 void SM_Trigger(bool reset = false)
 {
   static char pos; //position of the motor
-  const uint32_t SERVO_DELAY = 5; //12 ms delay for each state
+  const uint32_t SERVO_DELAY = 5; //5 ms delay for each state
   static enum {START, WAIT_FOR_SHOOT, TRIGGER_LEFT, TRIGGER_RIGHT, WAIT_RIGHT, WAIT_LEFT} state = START;
   static enum {STOP, LEFT, RIGHT} t_move = STOP;  //motor state
-  static uint32_t servoTime = 0;
+  static uint32_t servoTime = 0; //time for servo to delay
   
   //check if reset button is pressed
   if(reset)
@@ -150,7 +150,7 @@ void SM_Trigger(bool reset = false)
   //actions
   switch(state)
   {
-    case START:
+    case START:  // init
     {
       pos=90;
       myservo.write(pos);
@@ -158,7 +158,7 @@ void SM_Trigger(bool reset = false)
       break;
     }
 
-    case WAIT_FOR_SHOOT:
+    case WAIT_FOR_SHOOT: //wait for shoot flag
     {
       digitalWrite(ledpin,LOW);
 
@@ -187,12 +187,15 @@ void SM_Trigger(bool reset = false)
       break;
     }
 
-    case WAIT_RIGHT:
+    case WAIT_RIGHT: //check if we need to move trigger left
     {
 
+      //first we check if servo delay within delay speed
       if(millis() - servoTime >= SERVO_DELAY)
       { 
       if( pos >= 90 ){
+            // we are finished with the shot go back to wait
+            // reset variables
            state = WAIT_FOR_SHOOT;
            servoTime = 0;
            Done = true;
@@ -204,6 +207,7 @@ void SM_Trigger(bool reset = false)
         state = TRIGGER_RIGHT;
         t_move = RIGHT;
       }
+      
       }
       break;
     }
@@ -223,15 +227,15 @@ void SM_Trigger(bool reset = false)
 
       break;
     }
-    case WAIT_LEFT: //waits for time
+    case WAIT_LEFT: //waits for servo delay 
     {
 
       if(millis() - servoTime >= SERVO_DELAY)
       {
         if(pos <= 0){
-        state = TRIGGER_RIGHT;
+        state = TRIGGER_RIGHT; //switches to finish trigger action
          }else{
-        state = TRIGGER_LEFT;
+        state = TRIGGER_LEFT; //keep moving servo to the left
          }
       }
 
