@@ -97,5 +97,5 @@ Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.co
 
 Pip Install opencv-python [Documentation](https://pypi.org/project/opencv-python/)
 
-arduino-libraries/servo [Repository](https://github.com/arduino-libraries/Servo) //not sure if correct api
+arduino-libraries/servo [Repository](https://github.com/arduino-libraries/Servo) 
 
