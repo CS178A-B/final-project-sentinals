@@ -1,5 +1,10 @@
 import cv2
 import time
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18,GPIO.OUT)
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 prevTime = 0
@@ -17,8 +22,10 @@ while True:
     faces = face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
     if len(faces) > 0:
         print("[INFO] found {0} faces!".format(len(faces)))
+        GPIO.output(18,GPIO.HIGH)
     else:
         print("No face")
+        GPIO.output(18,GPIO.LOW)
     curTime = time.time()
     sec = curTime - prevTime
     prevTime = curTime
