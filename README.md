@@ -1,4 +1,4 @@
-# CS178A-B-Template
+# CS178A-B-Template: Nerf Sentry
 
 ## Table of Contents
 - [Overview](#overview)
@@ -8,10 +8,18 @@
 - [Dependencies](#dependencies)
 
 ## Overview
-<Include project description?
+Our project is an embedded system implementation that utilizes microcontrollers, servos, a camera, and a Nerf blaster. Put together, we have a Nerf Sentry that fires upon detecting the presence of any person.
 
 ## Team
 <a href="https://github.com/msalloum" target="_blank"><img src="https://avatars3.githubusercontent.com/u/1790819?s=400&v=4" align="left" height="30px">Mariam Salloum </a>
+
+<a href="https://github.com/eduardor626" target="_blank"><img src="https://avatars1.githubusercontent.com/u/33262466?s=400&u=c6b16422f4524bd8951a4989a7c85fbc6c010f84&v=4" align="left" height="30px">Eduardo Rocha</a>
+
+<a href="https://github.com/B-Tran" target="_blank"><img src="https://avatars0.githubusercontent.com/u/43649007?s=400&v=4" align="left" height="30px">Brandon Tran </a>
+
+<a href="https://github.com/sfazli96" target="_blank"><img src="https://avatars2.githubusercontent.com/u/43709736?s=400&v=4" align="left" height="30px">Sameh Fazli </a>
+
+<a href="https://github.com/LukeTheChang" target="_blank"><img src="https://avatars3.githubusercontent.com/u/43716206?s=400&v=4" align="left" height="30px">Luccas Chang </a>
 
 ## Usage
 Demo: <Link to youtube video>
@@ -19,6 +27,12 @@ Demo: <Link to youtube video>
 <Screenshot of application>
 
 ## How To Run
+At this moment, two major components are working independently: the openCV facial recognition and the sentry blaster. For facial recognition, an implementation using openCV2 is stored in a Raspberry Pi. The implementation is able to return footage from a webcam connected to the Raspberry Pi where, if a face is recognized, the implementation outlines a rectangle around the face. 
+
+For the sentry blaster, a servo is used to feed ammunition into the flywheel to commence firing. Originally, in its stock form, this mechanism depends  on trigger pull by the user to allow ammunition to be fed into the flywheel system. The blaster also no longer requires 6 C batteries as required in its stock formation. Instead, we were able hook the flywheel system, the component that actually fires the ammunition, with a power supply.
+
+At the moment, we have two Arduinos for the blaster, where one operates the servo that feeds ammo into the flywheel system and the other powers the flywheel system.
+
 In the project directory, you can run:
 
 ### `npm start`
@@ -56,13 +70,32 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Diagrams
 
-Sequence Diagram
+### Sequence Diagram:
 
-Frontend Structure
+The following two are state machines that we are able to implement to some extent
 
+* State Machine Sensor Controller:
 
-Overall System Diagram
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image1.jpg" height="300"/>
+
+* State Machine for Raspberry Pi:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image3.jpg" height="300"/>
+
+### Frontend Structure:
+
+Being an embedded system project, we do not have a graphical user interface or anything of that sort. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300"/>
+
+### Overall System Diagram:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image4.jpg" width="500" height="500"/>
 
 ## Dependencies
 Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
+
+Pip Install opencv-python [Documentation](https://pypi.org/project/opencv-python/)
+
+arduino-libraries/servo [Repository](https://github.com/arduino-libraries/Servo) //not sure if correct api
 
