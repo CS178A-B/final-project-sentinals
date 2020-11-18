@@ -16,8 +16,9 @@ https://pypi.org/project/opencv-python/ , If the command from the link doesn't w
 https://github.com/adarsh1021/facedetection/blob/master/haarcascade_frontalface_default.xml
 4. Find any image (person or anime is fine) that ends with .png, jpg, jpeg, etc.
 5. Include this image in the folder directory.
-6. Need to install this sudo apt-get install libopencv-dev in the command line
-7. Install pip in order to use openCV2 -> python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose and pip install opencv-python
+6. Need to install this command: sudo apt-get install libopencv-dev in the command line
+7. Install pip in order to use openCV2, run this command: python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose and pip install opencv-python
+8. You have to install, pip install RPi.GPIO to get the signal to the LED on the breadboard (this is for input and output from raspberry pi to the breadboard)
 8. Both commands run those in your home directory i.e Desktop, Documents, etc.
 9. Upgrade pip just in case of errors -> pip install --upgrade pip
 10. Or other option download anaconda https://docs.anaconda.com/anaconda/install/linux/ Follow the instructions on the website
