@@ -1,4 +1,4 @@
-# Facial Recognition to Run in less than 6 steps!!
+# How to run Facial Recognition
    To run in Linux, Follow these Steps
 Steps:
 1. First Open Command Line
