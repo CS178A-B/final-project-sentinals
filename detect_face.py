@@ -15,6 +15,10 @@ while True:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   # This method only works on gray skin images, so we have to convert the gray scale to rgb image
     
     faces = face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
+    if len(faces) > 0:
+        print("[INFO] found {0} faces!".format(len(faces)))
+    else:
+        print("No face")
     curTime = time.time()
     sec = curTime - prevTime
     prevTime = curTime
