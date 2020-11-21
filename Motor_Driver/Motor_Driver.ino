@@ -25,7 +25,7 @@ void SM_Driver(bool reset = false){
 
    //States
     static enum {START, WAIT, START_MOTOR, START_SHOOT} state = START;
-    const uint32_t RELAY_DELAY = 3000;  //3sec
+    const uint32_t RELAY_DELAY = 2500;  //2.5sec
     static int button = 0;
 
     switch(state)
