@@ -3,7 +3,7 @@
 Steps:
 1. First Open Command Line
 2. Type cd wherever you save it on you computer i.e Desktop, Documents, etc.
-3. Then in filename type python detectface.py. 
+3. Then in filename type python detectface.py
 4. There your camera should show your face that it is being recognized.
 5. To exit out of the program press Escape Key
 
