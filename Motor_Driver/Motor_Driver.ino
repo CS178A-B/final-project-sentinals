@@ -5,8 +5,8 @@ Servo myservo;  // create servo object to control a servo
 bool Flag = false; // flag to signal motor
 bool Shoot = false; // flag to signal pull trigger
 bool Done = false; // flag to signal the shot is complete
-int inPin = 7;   // choose the input pin (for a buttonpress)
-int ledpin = 13; // output pin for debugging when initializing system
+int inPin = 7;   // choose the input pin (for RaspberryPi to Arduino communication)
+int ledpin = 13; // 
 
 uint32_t timeLastTransition = 0; //motor startup time
 
@@ -15,7 +15,7 @@ void setup() {
   pinMode(Relay,OUTPUT); //declare Relay as output
 
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-  pinMode(inPin, INPUT);    // declare button as input
+  pinMode(inPin, INPUT);    // declare piOutput as input
   pinMode(ledpin,OUTPUT);  // declare led output for debugging
 
 }
@@ -26,10 +26,11 @@ void SM_Driver(bool reset = false){
    //States
     static enum {START, WAIT, START_MOTOR, START_SHOOT} state = START;
     const uint32_t RELAY_DELAY = 2500;  //2.5sec
-    static int button = 0;
+    static int piOutput = 0;
 
     switch(state)
     {
+
       case START:
       {
         Flag = false;
@@ -38,18 +39,15 @@ void SM_Driver(bool reset = false){
         state = WAIT;
         break;
       }
+
       case WAIT:
       {
-        button = digitalRead(inPin);  // read input value
-
-        if(button != HIGH && Flag!= true){
-          state = WAIT;
-//          digitalWrite(ledpin,LOW);
-        }else if(button == HIGH){
+        piOutput = digitalRead(inPin);  // read input value
+        
+        if(piOutput == HIGH){
           state = START_MOTOR;
           Flag = true;
           timeLastTransition = millis();
-//          digitalWrite(ledpin,HIGH);
         }else{
           state = WAIT;
         }
@@ -81,29 +79,23 @@ void SM_Driver(bool reset = false){
           state = START_SHOOT;
         }
         break;
+      }
+
+      default:
+        break;
     }
-    default:
-      break;
-    }
+
 }
 
 
 void SM_Relay(bool reset = false)
 {
-//  const uint32_t RELAY_DELAY = 5000;  //5sec
   //States
   static enum {OFF, ON} state = OFF;
-//  static uint32_t timeLastTransition = 0;
-  
-
-//  if (reset)
-//  {
-//    state = OFF;
-//    digitalWrite(Relay,HIGH);
-//  }
 
   switch(state)
   {
+
     case OFF: //Motor is turned off
     {
       digitalWrite(Relay,LOW);
@@ -112,6 +104,7 @@ void SM_Relay(bool reset = false)
       }
       break;
     }
+
     case ON:  //Motor is turned on 
     {
       digitalWrite(Relay,HIGH);
@@ -123,12 +116,15 @@ void SM_Relay(bool reset = false)
       
       break;
     }
+
     default:
     {
       state = OFF;
       break;
     }
+
   }
+
 }
 
 void SM_Trigger(bool reset = false)
@@ -139,7 +135,7 @@ void SM_Trigger(bool reset = false)
   static enum {STOP, LEFT, RIGHT} t_move = STOP;  //motor state
   static uint32_t servoTime = 0; //time for servo to delay
   
-  //check if reset button is pressed
+  //check if reset piOutput is pressed (might not need)
   if(reset)
   {
     state = START;
@@ -150,7 +146,8 @@ void SM_Trigger(bool reset = false)
   //actions
   switch(state)
   {
-    case START:  // init
+
+    case START:  
     {
       pos=90;
       myservo.write(pos);
@@ -160,13 +157,10 @@ void SM_Trigger(bool reset = false)
 
     case WAIT_FOR_SHOOT: //wait for shoot flag
     {
-      digitalWrite(ledpin,LOW);
-
       if(Shoot == false){
         state = WAIT_FOR_SHOOT;
       }
       else if(Shoot == true){
-//        digitalWrite(ledpin,HIGH);
         state = TRIGGER_LEFT;
       }else{
         state = WAIT_FOR_SHOOT;
@@ -216,7 +210,6 @@ void SM_Trigger(bool reset = false)
     {
      digitalWrite(ledpin,HIGH);
       t_move = LEFT;
-//      digitalWrite(ledpin,HIGH);
       if(pos > 0)
       {
         pos -= 1;
@@ -227,6 +220,7 @@ void SM_Trigger(bool reset = false)
 
       break;
     }
+
     case WAIT_LEFT: //waits for servo delay 
     {
 
@@ -238,10 +232,9 @@ void SM_Trigger(bool reset = false)
         state = TRIGGER_LEFT; //keep moving servo to the left
          }
       }
-
-      
       break;
     }
+
     default:
     {
       break;
