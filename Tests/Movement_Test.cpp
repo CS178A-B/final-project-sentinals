@@ -1,6 +1,8 @@
 //#include <Servo.h>
 
-#include "Mock_Servo.h"	//this is a mock for testing purposes
+//these are mock libraries for testing purposes
+#include "Mock_Servo.h"	
+#include "Mock_Functions.h"
 
 //input pins
 const char c_pin_1 = A0; //controller pin 1
@@ -18,7 +20,7 @@ Servo h_servo;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);
+  //Serial.begin(115200);
   pinMode(c_pin_1, INPUT);
   pinMode(c_pin_2, INPUT);
   h_servo.attach(h_pin);
