@@ -15,7 +15,7 @@ unsigned long millis()
 {
     timeb t_now;
     ftime(&t_now);
-    return (tnow.time - t_start.time) * 1000 + (t_now.millitm - t_start.millitm);
+    return (t_now.time - t_start.time) * 1000 + (t_now.millitm - t_start.millitm);
 }
 
 //delays the number of milliseconds delayed
