@@ -8,3 +8,8 @@ ADD_EXECUTABLE(Mock_Time_Test.out
     "Test_Files/Mock_Time_Test.cpp"
     "Mock_Libraries/Mock_Time.cpp"
     )
+
+ADD_EXECUTABLE(GPIO_Test.out
+    "Test_Files/GPIO_Test.cpp"
+    "Mock_Libraries/Mock_Time.cpp"
+    )
