@@ -19,6 +19,7 @@ int main()
     finish = h_r_clock::now();
     std::cout<< "test completed " << ms << " milliseconds\n";
     std::cout<< "execution time of test " 
-        << std::chrono::duration_cast<std::chrono::milliseconds>(finish-start).count()
+        <<
+        std::chrono::duration_cast<std::chrono::milliseconds>(finish-start).count()
         << " milliseconds\n";
 }

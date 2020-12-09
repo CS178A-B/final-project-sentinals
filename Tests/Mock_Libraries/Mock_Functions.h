@@ -4,7 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-//This header contains the mock functionality of the general purpose input output pins
+//This header contains the mock functionality of the general purpose input
+//output pins
 
 enum pin_type{INPUT, OUTPUT}; //this defines the pin as set to input or output
 enum pin_out{LOW, HIGH}; //defines if output is high or low
@@ -30,63 +31,27 @@ enum pin_out{LOW, HIGH}; //defines if output is high or low
 #define A4 18
 #define A5 19
 
-//output vector of the results
-std::vector<std::string> output;
-//gpio read pin values
-char pinIO[19];
+//gpio read pin values, extern tells the compiler that the variable exists
+//elsewhere. In this case it is is Mock_Functions.cpp
+extern char pinIO[19];
 
 //"sets" pinmode
-void pinMode(const int & pin, const pin_type & gpio)
-{
-    if(gpio == INPUT)
-    {
-        std::cout<< "Setting pin: " << pin << " as INPUT\n";
-    }
-    else
-    {
-        std::cout<< "Setting pin: " << pin << " as OUTPUT\n";
-    }
-}
+void pinMode(const int & pin, const pin_type & gpio);
 
 //"sets" pinmode
-void pinMode(const int & pin, const int & gpio)
-{
-    if(gpio == INPUT)
-    {
-        std::cout<< "Setting pin: " << pin << " as INPUT\n";
-    }
-    else
-    {
-        std::cout<< "Setting pin: " << pin << " as OUTPUT\n";
-    }
-}
+void pinMode(const int & pin, const int & gpio);
 
 //"reads" data from the pin
 //this requires the user to set the value of the pin before
 //calling this function
-char digitalRead(const char & pin)
-{
-    if(pin >= 0 && pin <=19)
-    {
-        return pinIO[pin];
-    }
-    else
-    {
-        throw "INVALID PIN\n";
-    }
-}
+char digitalRead(const char & pin, std::vector<std::string> * output);
 
-//"writes" data to the pin
-void digitalWrite(const char & pin, const bool & value)
-{
-    output.push_back("Writing to pin " + std::to_string(pin) + ": " + std::to_string(value));
-    pinIO[pin] = value;
-}
+//"writes" data to the pin, outputs resulting string to vector
+void digitalWrite(const char & pin, const bool & value, std::vector<std::string>
+        * output);
 
-//"writes" data to the pin
-void digitalWrite(const char & pin, const pin_out & value)   
-{
-    output.push_back("Writing to pin " + std::to_string(pin) + ": " + std::to_string(value));
-    pinIO[pin] = value;
-}
+//"writes" data to the pin, outputs resulting string to vector
+void digitalWrite(const char & pin, const pin_out & value,
+        std::vector<std::string> * output);
+
 #endif

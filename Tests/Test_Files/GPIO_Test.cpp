@@ -1,8 +1,10 @@
 #include <iostream>
-#include "../Mock_Libraries/Mock_Functions.h"
 #include "../Mock_Libraries/Mock_Time.h"
+#include "../Mock_Libraries/Mock_Functions.h"
 
 #define LED_BUILTIN 13 //defining led_builtin for blink example test
+
+std::vector<std::string> output;
 
 void setup()
 {
@@ -17,14 +19,14 @@ void loop()
 
     if( (millis() - start) > blink_Delay)
     {
-        x = digitalRead(LED_BUILTIN);
+        x = digitalRead(LED_BUILTIN, &output);
         if(x == 1)
         {
-            digitalWrite(LED_BUILTIN, LOW);
+            digitalWrite(LED_BUILTIN, LOW, &output);
         }
         else
         {
-            digitalWrite(LED_BUILTIN, HIGH);
+            digitalWrite(LED_BUILTIN, HIGH, &output);
         }
         start = millis();
     }
@@ -48,7 +50,8 @@ int main()
         loop();
     }
     //expecting results
-    std::cout<< "Expected results: writing out to pin " << LED_BUILTIN << ": 1 0 1 0 1 0 \n";
+    std::cout<< "Expected results: writing out to pin " << LED_BUILTIN << ": 1"
+        " 0 1 0 1 0 \n";
     std::cout << "Actual results : \n";
     //prints the results
     for(int i = 0; i < output.size(); ++i)

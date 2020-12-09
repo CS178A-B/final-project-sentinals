@@ -12,4 +12,11 @@ ADD_EXECUTABLE(Mock_Time_Test.out
 ADD_EXECUTABLE(GPIO_Test.out
     "Test_Files/GPIO_Test.cpp"
     "Mock_Libraries/Mock_Time.cpp"
+    "Mock_Libraries/Mock_Functions.cpp"
+    )
+
+ADD_EXECUTABLE(Servo_Test.out
+    "Test_Files/Servo_Test.cpp"
+    "Mock_Libraries/Mock_Time.cpp"
+    "Mock_Libraries/Mock_Servo.cpp"
     )
