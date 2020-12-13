@@ -7,8 +7,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(18,GPIO.OUT)
 
-#face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
+#side_face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
 #face_cascade = cv2.CascadeClassifier('cascade.xml')
 prevTime = 0
 ## This will get our web camera 
@@ -24,7 +25,7 @@ while True:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   # This method only works on gray skin images, so we have to convert the gray scale to rgb image
     
     faces = face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
-    
+    #side_faces = side_face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
     if len(faces) > 0:
         print("[INFO] found {0} faces!".format(len(faces)))
         GPIO.output(18,GPIO.HIGH)
