@@ -107,7 +107,7 @@ void SM_H_Motor(bool reset = false)
     }
     case RIGHT:
     {
-      if(x_pos < 0)
+      if(x_pos > 0)
       {
         x_pos -= 1;
       }
@@ -135,11 +135,11 @@ void SM_H_Motor(bool reset = false)
     }
     case STOP:
     {
-      if(c_pin_1 && !c_pin_2)
+      if(x_left && !x_right)
       {
         state = LEFT;
       }
-      else if (!c_pin_1 && c_pin_2)
+      else if (!x_left && x_right)
       {
         state = RIGHT;
       }
@@ -158,11 +158,11 @@ void SM_H_Motor(bool reset = false)
     {
       if(millis() - h_Time >= MOTOR_DELAY)
       {
-        if(c_pin_1 && !c_pin_2)
+        if(x_left && !x_right)
         {
           state = LEFT;
         }
-        else if(!c_pin_1 && c_pin_2)
+        else if(!x_left && x_right)
         {
           state = RIGHT;
         }
@@ -186,11 +186,11 @@ void SM_H_Motor(bool reset = false)
     {
       if(millis() - h_Time >= MOTOR_DELAY)
       {
-        if(c_pin_1 && !c_pin_2)
+        if(x_left && !x_right)
         {
           state = LEFT;
         }
-        else if(!c_pin_1 && c_pin_2)
+        else if(!x_left && x_right)
         {
           state = RIGHT;
         }
