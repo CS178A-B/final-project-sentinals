@@ -1,16 +1,20 @@
 #include <Servo.h>
 
 //input pins
-const char c_pin_1 = 4; //controller pin 1
-const char c_pin_2 = 5; //controller pin 2
-const int ledPin =  12;      // the number of the LED pin
+const char c_pin_1 = A0; //controller pin 1
+const char c_pin_2 = A1; //controller pin 2
 
+const int ledLeft = 11;
+const int ledRight = 12;
+
+//const byte c_pin_3 = A2; //controller pin 3
+//const byte c_pin_4 = A3; //controller pin 4
 //data variables
 char x_left;  //checks if the motor moves left
 char x_right; //checks if the motor moves right
-char x_pos;
+short x_pos;
 //output pins
-const char h_pin = 8; //temp output pin for horizontal pin movement
+const char h_pin = 5; //temp output pin for horizontal pin movement
 Servo h_servo;
 
 
@@ -19,9 +23,8 @@ void setup() {
   Serial.begin(115200);
   pinMode(c_pin_1, INPUT);
   pinMode(c_pin_2, INPUT);
-  
-  pinMode(ledPin, OUTPUT);
-
+  pinMode(ledLeft,INPUT);
+  pinMode(ledRight,INPUT);
   
   h_servo.attach(h_pin);
 }
@@ -43,10 +46,8 @@ void SM_Read(bool reset = false)
   {
     case READ:
     {
-
       x_left = digitalRead(c_pin_1);
       x_right = digitalRead(c_pin_2);
-
       break;
     }
     default:
@@ -75,7 +76,7 @@ void SM_H_Motor(bool reset = false)
 {
   //states
   static enum {START, STOP, LEFT, WAIT_LEFT, RIGHT, WAIT_RIGHT} state = START;
-  const uint32_t MOTOR_DELAY = 1; //1 ms
+  const uint32_t MOTOR_DELAY = 7; //1 ms
   static uint32_t h_Time = 0; //time for motor delay
 
   //on reset
@@ -83,8 +84,9 @@ void SM_H_Motor(bool reset = false)
   {
     state=START;
   }
-
   //actions
+  digitalWrite(ledLeft,x_left);
+  digitalWrite(ledRight,x_right);
   switch(state)
   {
     case START:
@@ -95,7 +97,6 @@ void SM_H_Motor(bool reset = false)
     }
     case STOP:
     {
-
       break;
     }
     case LEFT:
@@ -105,7 +106,6 @@ void SM_H_Motor(bool reset = false)
         x_pos += 1; 
       }
       h_servo.write(x_pos);
-      delay(1);
       h_Time = millis();
       break;
     }
@@ -115,7 +115,6 @@ void SM_H_Motor(bool reset = false)
     }
     case RIGHT:
     {
-
       if(x_pos > 0)
       {
         x_pos -= 1;
@@ -144,10 +143,8 @@ void SM_H_Motor(bool reset = false)
     }
     case STOP:
     {
-
       if(x_left && !x_right)
       {
-
         state = LEFT;
       }
       else if (!x_left && x_right)
@@ -171,7 +168,6 @@ void SM_H_Motor(bool reset = false)
       {
         if(x_left && !x_right)
         {
-          digitalWrite(ledPin, HIGH);
           state = LEFT;
         }
         else if(!x_left && x_right)

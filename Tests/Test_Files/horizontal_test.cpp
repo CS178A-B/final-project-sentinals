@@ -237,60 +237,18 @@ int main()
     setup();
 
     //initializing c_pin 1 and 2 input
+    pinIO[c_pin_1] = 1;
+    pinIO[c_pin_2] = 0;
+
 
     //initialize the timer then run the program ~10ms
     unsigned long temp;
-    unsigned long finish = 60;
+    unsigned long finish = 95;
     initialize_time();
     unsigned long start = millis();
     while( (millis() - start) <= finish)
     {
-        //moving left 10ms
-        if( (millis() - start) <= 10)
-        {
-            pinIO[c_pin_1] = 1;
-            pinIO[c_pin_2] = 0;
-        }
-        //stop 10ms
-        else if( (millis() - start) <= 20)
-        {
-            pinIO[c_pin_1] = 0;
-            pinIO[c_pin_2] = 0;
-        }
-        //moving right 10ms
-        else if( (millis() - start) <= 30)
-        {
-            pinIO[c_pin_1] = 0;
-            pinIO[c_pin_2] = 1;
-        }
-        //stop 10ms
-        else if( (millis() - start) <= 40)
-        {
-            pinIO[c_pin_1] = 0;
-            pinIO[c_pin_2] = 0;
-        }
-        //alternate 10ms
-        else if( (millis() - start) <= 41)
-        {
-            pinIO[c_pin_1] = 0;
-            pinIO[c_pin_2] = 1;
-            temp = millis();
-        }
-        else if( (millis() - start) <= 50)
-        {
-            if( (millis() - temp) >= 1)
-            {
-                pinIO[c_pin_1] = (pinIO[c_pin_1] == 0) ? 1:0;
-                pinIO[c_pin_2] = (pinIO[c_pin_2] == 0) ? 1:0;
-                temp = millis();
-            }
-        }
-        //stop 10 ms
-        else
-        {
-            pinIO[c_pin_1] = 0;
-            pinIO[c_pin_2] = 0;
-        }
+
         loop();
     }
 
