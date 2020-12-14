@@ -7,8 +7,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(18,GPIO.OUT)
 
-#face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
+#face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
 #face_cascade = cv2.CascadeClassifier('cascade.xml')
 prevTime = 0
 ## This will get our web camera 
