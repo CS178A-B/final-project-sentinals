@@ -233,6 +233,8 @@ void loop() {
 
 int main()
 {
+    //this runs the test to see if the servo motor can go all the way left
+
     //perform "setup"
     setup();
 
