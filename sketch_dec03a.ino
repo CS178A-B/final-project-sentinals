@@ -10,6 +10,10 @@ int ledPin_4 = 11;
 int ledPin_5 = 12;
 
 int inputPin_1 = 2;
+int inputPin_2 = 3;
+int inputPin_3 = 4;
+int inputPin_4 = 5;
+int inputPin_5 = 6;
 
 int pirState = LOW;
 int val = 0;
@@ -28,17 +32,17 @@ void loop() {
 
   if(val == HIGH) {
     Serial.println("motion detected");
-    if(pirState == HIGH) {
+    if(pirState == LOW) {
       Serial.println("motion detected again");
-      digitalWrite(ledPin_1, LOW);
-      delay(500);
+      /* digitalWrite(ledPin_1, LOW);
+      delay(250);
       digitalWrite(ledPin_1, HIGH);
-      delay(500);
+      delay(250); */
     }   
     
     Serial.println("motion established?");
     digitalWrite(ledPin_1, HIGH);
-    delay(500);
+    //delay(250);
     pirState = HIGH;
   } else {
     if(pirState == HIGH) {
