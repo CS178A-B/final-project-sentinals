@@ -1,0 +1,4 @@
+[submodule "models"]
+	path = TensorFlow2/models
+    url = https://github.com/B-Tran/models.git
+    branch = B-Tran/Tensorflow2-Object-Detection
