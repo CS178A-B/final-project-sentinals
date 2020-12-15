@@ -86,6 +86,14 @@ Being an embedded system project, we do not have a graphical user interface or a
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300"/>
 
+As of Milestone Two, we have two major components in development: the blaster itself and the base/platform on which the blaster will be mounted on. The platform currently offers horizontal articulation. Below is the blaster, which has not seen much major modifications since Milestone One. Above the blaster is a sketch made when deceloping the base.
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2262.jpg" width="600" height="600"/>
+
+Below is the base, with Eduardo holding what should be the top half of the base on which the blaster will be placed upon. Between the wooden boards are ball-bearings to assist in the rotation of the blaster.
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2266.jpg" width="600" height="600"/>
+
 ### Overall System Diagram:
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image4.jpg" width="500" height="500"/>
