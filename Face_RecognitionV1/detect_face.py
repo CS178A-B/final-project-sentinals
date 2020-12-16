@@ -25,7 +25,13 @@ while True:
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   # This method only works on gray skin images, so we have to convert the gray scale to rgb image
     
     faces = face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
-    
+    for (x, y, w, h) in faces:  # This will find our coordinates and y
+        x1 = x
+        x2 = x + w
+        y1 = y
+        y2 = y + h
+        print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
+        print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner
     if len(faces) > 0:
         print("[INFO] found {0} faces!".format(len(faces)))
         GPIO.output(18,GPIO.HIGH)
@@ -43,6 +49,7 @@ while True:
     cv2.putText(frame, 'Number of Faces Detected: ' + str, (0,  100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
     cv2.imshow('img', img) ## Last we show the image
     x = cv2.waitKey(30) & 0xff
+    
     if x==27:
         break
 ## Press escape to exit the program
