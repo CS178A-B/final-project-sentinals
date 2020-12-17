@@ -6,6 +6,8 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(18,GPIO.OUT)
+GPIO.setup(23,GPIO.OUT)
+GPIO.setup(24,GPIO.OUT)
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 #face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
@@ -33,11 +35,33 @@ while True:
         print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
         print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner
     if len(faces) > 0:
-        print("[INFO] found {0} faces!".format(len(faces)))
-        GPIO.output(18,GPIO.HIGH)
+        #print("[INFO] found {0} faces!".format(len(faces)))
+        #GPIO.output(18,GPIO.HIGH)
+        #if x1 >= 250 and x2 <= 500:
+           # print("[INFO] found {0} faces!".format(len(faces)))
+           # GPIO.output(18,GPIO.HIGH)
+        if x1 < 240:
+            print("move left")
+            GPIO.output(18,GPIO.LOW)
+            GPIO.output(23,GPIO.HIGH)
+            GPIO.output(24,GPIO.LOW)
+
+        elif x2 > 500:
+            print("move right")
+            GPIO.output(18,GPIO.LOW)
+            GPIO.output(23,GPIO.LOW)
+            GPIO.output(24,GPIO.HIGH)
+        else:
+            print("[INFO] found {0} faces!".format(len(faces)))
+            GPIO.output(18,GPIO.HIGH)
+            GPIO.output(23,GPIO.LOW)
+            GPIO.output(24,GPIO.LOW)
     else:
         print("No face")
         GPIO.output(18,GPIO.LOW)
+        GPIO.output(23,GPIO.LOW)
+        GPIO.output(24,GPIO.LOW)
+
     curTime = time.time()
     sec = curTime - prevTime
     prevTime = curTime
