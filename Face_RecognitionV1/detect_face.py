@@ -41,13 +41,13 @@ while True:
         #if x1 >= 250 and x2 <= 500:
            # print("[INFO] found {0} faces!".format(len(faces)))
            # GPIO.output(18,GPIO.HIGH)
-        if x1 < 225: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
+        if x1 < 350: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
             print("move left")
             GPIO.output(18,GPIO.LOW)
             GPIO.output(23,GPIO.HIGH)
             GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 475: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
+        elif x2 > 550: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
             print("move right")
             GPIO.output(18,GPIO.LOW)
             GPIO.output(23,GPIO.LOW)
