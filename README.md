@@ -96,7 +96,7 @@ Below is the base, with Eduardo holding what should be the top half of the base 
 
 ### Overall System Diagram:
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image4.jpg" width="500" height="500"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/General%20Sentry%20Diagram%20v2.png" width="800" height="500"/>
 
 ## Dependencies
 Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
