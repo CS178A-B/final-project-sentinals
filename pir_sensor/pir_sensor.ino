@@ -35,86 +35,114 @@ void setup() {
 }
 
 //'bool reset = false' is an arg special case when reset button is pressed; optional
-/* void sensor_1() {
-  static enum {START, WAIT, DETECT, DELAY};
-  switch(state) {
-    case START:
-    default:
-  }
+void sm_sensor1(bool reset = false) {
+  static enum {START, WAIT, DETECT, DELAY} state = START;
 
   switch(state) {
-    case START:
-  }
-} */
+    case START: { 
+      digitalWrite(ledPin_1, LOW);
+      state = WAIT;
+      break;
+    }
+    case WAIT: {
+      val_1 = digitalRead(inputPin_1);
+      if (val_1 == HIGH) {
+        state = DETECT;
+      } else {
+        state = WAIT;
+      }
+      break;
+    }
+    case DETECT: {
+      digitalWrite(ledPin_1, HIGH);
+      state = DELAY;
+      break;
+    }
+    case DELAY: {
+      delay(5000);
+      state = WAIT;
+      digitalWrite(ledPin_1, LOW);
+      break;
+    }
+    default:
+      state = START;
+      break;
+  }    
+}
+
+void sm_sensor2(bool reset = false) {
+  static enum {START, WAIT, DETECT, DELAY} state = START;
+
+  switch(state) {
+    case START: { 
+      digitalWrite(ledPin_2, LOW);
+      state = WAIT;
+      break;
+    }
+    case WAIT: {
+      val_2 = digitalRead(inputPin_2);
+      if (val_2 == HIGH) {
+        state = DETECT;
+      } else {
+        state = WAIT;
+      }
+      break;
+    }
+    case DETECT: {
+      digitalWrite(ledPin_2, HIGH);
+      state = DELAY;
+      break;
+    }
+    case DELAY: {
+      delay(5000);
+      state = WAIT;
+      digitalWrite(ledPin_2, LOW);
+      break;
+    }
+    default:
+      state = START;
+      break;
+  }    
+}
+
+void sm_sensor3(bool reset = false) {
+  static enum {START, WAIT, DETECT, DELAY} state = START;
+
+  switch(state) {
+    case START: { 
+      digitalWrite(ledPin_3, LOW);
+      state = WAIT;
+      break;
+    }
+    case WAIT: {
+      val_3 = digitalRead(inputPin_3);
+      if (val_3 == HIGH) {
+        state = DETECT;
+      } else {
+        state = WAIT;
+      }
+      break;
+    }
+    case DETECT: {
+      digitalWrite(ledPin_3, HIGH);
+      state = DELAY;
+      break;
+    }
+    case DELAY: {
+      delay(5000);
+      state = WAIT;
+      digitalWrite(ledPin_3, LOW);
+      break;
+    }
+    default:
+      state = START;
+      break;
+  }    
+}
 
 void loop() {
   // put your main code here, to run repeatedly:
-  val_1 = digitalRead(inputPin_1);
-  val_2 = digitalRead(inputPin_2);
-  val_3 = digitalRead(inputPin_3);
-
-  if(val_1 == HIGH) {
-    Serial.println("motion detected");
-    /* if(pirState == LOW) {
-      Serial.println("motion detected again");
-      digitalWrite(ledPin_1, LOW);
-      delay(250);
-      digitalWrite(ledPin_1, HIGH);
-      delay(250);
-    } */   
-    
-    Serial.println("motion established?");
-    digitalWrite(ledPin_1, HIGH);
-    //delay(250);
-    pirState_1 = HIGH;
-  } else {
-    if(pirState_1 == HIGH) {
-      //just got out of detection; keep the LED high during reclimatize for 5 seconds; then power off LED
-      digitalWrite(ledPin_1, HIGH);
-      delay(5000);
-    }
-    digitalWrite(ledPin_1, LOW);
-    pirState_1 = LOW;
-  }
-  
-   if(val_2 == HIGH) {
-    Serial.println("motion detected");
-    
-    Serial.println("motion established?");
-    digitalWrite(ledPin_2, HIGH);
-    //delay(250);
-    pirState_2 = HIGH;
-  } else {
-    if(pirState_2 == HIGH) {
-      //just got out of detection; keep the LED high during reclimatize for 5 seconds; then power off LED
-      digitalWrite(ledPin_2, HIGH);
-      delay(5000);
-    }
-    digitalWrite(ledPin_2, LOW);
-    pirState_2 = LOW;
-  }
-  
-  if(val_3 == HIGH) {
-    Serial.println("motion detected");
-    //if (pirState == LOW) {
-    //  Serial.println("motion detected again");
-    //  digitalWrite(ledPin_1, LOW);
-    //  delay(250);
-    //  digitalWrite(ledPin_1, HIGH);
-    //  delay(250);
-    //}  
-    
-    Serial.println("motion established?");
-    digitalWrite(ledPin_3, HIGH);
-    //delay(250);
-    pirState_3 = HIGH;
-  } else {
-    if(pirState_3 == HIGH) {
-      //just got out of detection; keep the LED high during reclimatize for 5 seconds; then power off LED
-      digitalWrite(ledPin_3, HIGH);
-      delay(5000);
-    }
-    digitalWrite(ledPin_3, LOW);
-    pirState_3 = LOW;
-  } 
+  sm_sensor1();
+  sm_sensor2();
+  sm_sensor3();
 }
