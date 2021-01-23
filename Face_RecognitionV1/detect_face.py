@@ -3,6 +3,8 @@ import cv2
 import time
 import RPi.GPIO as GPIO
 
+import datetime
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(18,GPIO.OUT)
@@ -15,6 +17,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
 #face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
 #face_cascade = cv2.CascadeClassifier('cascade.xml')
 prevTime = 0
+count = 0
 ## This will get our web camera 
 cap = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -54,6 +57,7 @@ while True:
             GPIO.output(24,GPIO.HIGH)
         else:
             print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
+            #/home/pi/final-project-sentinals/Face_RecognitionV1/saved_frames
             GPIO.output(18,GPIO.HIGH)
             GPIO.output(23,GPIO.LOW)
             GPIO.output(24,GPIO.LOW)
@@ -73,6 +77,12 @@ while True:
         cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
     cv2.putText(frame, 'Number of Faces Detected: ' + str, (0,  100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
     cv2.imshow('img', img) ## Last we show the image
+    
+    #save image
+    #datetime_obj = datetime.datetime.now()
+    #datetime_tag = datetime_obj.strftime('%m/%d/%Y')
+    cv2.imwrite("/home/pi/final-project-sentinals/Face_RecognitionV1/saved_frames/face_%d.jpg" %count, img)
+    count += 1
     x = cv2.waitKey(30) & 0xff
     
     if x==27:
