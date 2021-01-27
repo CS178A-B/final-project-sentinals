@@ -210,14 +210,14 @@ void SM_H_Motor(bool reset = false)
     {
       if(x_left || x_right) {
         state = WAIT;
-      } if ( (val_1 && val_2 && !val_3) || (val_1 && !val_2 && !val_3) ) {
+      } else if ( (val_1 && val_2 && !val_3) || (val_1 && !val_2 && !val_3) ) {
         state = SET_R;
       } else if ( (!val_1 && val_2 && val_3) || (!val_1 && !val_2 && val_3) ) {
         state = SET_L;
       } else if ( (!val_1 && val_2 && !val_3) ) {
         state = SET_C;
       } else {
-        state = WAIT;
+        state = STOP;
       }
       break;
     }
@@ -268,7 +268,7 @@ void SM_H_Motor(bool reset = false)
         }
         else
         {
-          state = WAIT;
+          state = STOP;
         }
       }
       else
@@ -296,7 +296,7 @@ void SM_H_Motor(bool reset = false)
         }
         else
         {
-          state = WAIT;
+          state = STOP;
         }
       }
       else
@@ -326,7 +326,7 @@ int main()
     setup();
 
     //initializing c_pin 1 and 2 input
-    pinIO[c_pin_1] = 1;
+    pinIO[c_pin_1] = 0;
     pinIO[c_pin_2] = 0;
 
     pinIO[inputPin_1] = 1;
@@ -340,7 +340,6 @@ int main()
     unsigned long start = millis();
     while( (millis() - start) <= finish)
     {
-
         loop();
     }
 
