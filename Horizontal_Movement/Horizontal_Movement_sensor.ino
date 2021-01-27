@@ -75,9 +75,6 @@ void SM_Read(bool reset = false)
     case READ:
     {
       //reset sensor bits before read
-      val_1 = 0;
-      val_2 = 0;
-      val_3 = 0;
 
       x_left = digitalRead(c_pin_1);
       x_right = digitalRead(c_pin_2);
@@ -152,19 +149,19 @@ void SM_H_Motor(bool reset = false)
     case SET_L: 
     {
       h_servo.write(170);
-      delay(3000);
+      delay(500);
       break;
     }
     case SET_C: 
     {
       h_servo.write(90);
-      delay(3000);
+      delay(500);
       break;
     }
     case SET_R: 
     {
       h_servo.write(10);
-      delay(3000);
+      delay(500);
       break;
     }
     case WAIT: 
@@ -215,11 +212,13 @@ void SM_H_Motor(bool reset = false)
     }
     case STOP: 
     {
-      if ( (val_1 && val_2 && !val_3) || (val_1 && !val_2 && !val_3) ) {
+      if(x_left || x_right) {
+        state = WAIT;
+      } else if ( (val_1 && val_2 && !val_3) || (val_1 && !val_2 && !val_3) ) {
         state = SET_R;
       } else if ( (!val_1 && val_2 && val_3) || (!val_1 && !val_2 && val_3) ) {
         state = SET_L;
-      } else if ( (!val_1 && val_2 && !val_3) || (!val_1 && !val_2 && !val_3) ) {
+      } else if ( (!val_1 && val_2 && !val_3) ) {
         state = SET_C;
       } else {
         state = STOP;
@@ -273,7 +272,7 @@ void SM_H_Motor(bool reset = false)
         }
         else
         {
-          state = WAIT;
+          state = STOP;
         }
       }
       else
@@ -301,7 +300,7 @@ void SM_H_Motor(bool reset = false)
         }
         else
         {
-          state = WAIT;
+          state = STOP;
         }
       }
       else

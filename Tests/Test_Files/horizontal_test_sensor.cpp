@@ -141,19 +141,19 @@ void SM_H_Motor(bool reset = false)
     case SET_L: 
     {
       h_servo.write(170, &results);
-      //delay(3000);
+      delay(500);
       break;
     }
     case SET_C: 
     {
       h_servo.write(90, &results);
-      //delay(3000);
+      delay(500);
       break;
     }
     case SET_R: 
     {
       h_servo.write(10, &results);
-      //delay(3000);
+      delay(500);
       break;
     }
     case WAIT: 
@@ -329,7 +329,7 @@ int main()
     pinIO[c_pin_1] = 0;
     pinIO[c_pin_2] = 0;
 
-    pinIO[inputPin_1] = 1;
+    pinIO[inputPin_1] = 0;
     pinIO[inputPin_2] = 0;
     pinIO[inputPin_3] = 0;
 
