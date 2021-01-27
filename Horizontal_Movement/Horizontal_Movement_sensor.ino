@@ -63,6 +63,10 @@ void SM_Read(bool reset = false)
   {
     x_left = 0;
     x_right = 0;
+
+    val_1 = 0;
+    val_2 = 0;
+    val_3 = 0;
   }
 
   //actions
@@ -147,19 +151,19 @@ void SM_H_Motor(bool reset = false)
     }
     case SET_L: 
     {
-      myservo.write(170);
+      h_servo.write(170);
       delay(3000);
       break;
     }
     case SET_C: 
     {
-      myservo.write(90);
+      h_servo.write(90);
       delay(3000);
       break;
     }
     case SET_R: 
     {
-      myservo.write(10);
+      h_servo.write(10);
       delay(3000);
       break;
     }
