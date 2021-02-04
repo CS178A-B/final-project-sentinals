@@ -49,14 +49,11 @@ The following two are state machines that we are able to implement to some exten
 
 Being an embedded system project, we do not have a graphical user interface or anything of that sort yet. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="400" height="400" />
-<center>Initial 3D Design made in Blender</center>
-
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300" />
 
 As of Milestone One, we have two major components in development: the Nerf blaster itself and the base/platform on which the blaster will be mounted on. Below is the dissassembled Nerf blaster with the components needed for it to power ON and fire. We also took away the need for the 6 C batteries needed to power the Blaster and instead attached a Voltage Booster to an AC to DC power supply. Decreasing the overall weight of our Blaster.  
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfBlasterBase.JPG" width="700" height="500"/>
-<center>Labeled components on the Nerf Blaster</center>
 
 Next, we decided to tackle the Horizontal Movement of the Blaster for Milestone Two. We came up with a few ideas for making the base rotate and finally decided on using ring ball-bearings to assist rotation. A basic servo wouldn't be strong enough to rotate the Blaster efficiently, this is why we decided to attach ball-bearings to assist it. 
 
@@ -76,7 +73,6 @@ Next we decided to build the main base which is what the Nerf Sentry will be pla
 For Milestone Three we organize the components of the Nerf Sentry in a 'nice' fashion so that the wires are not all over the place. The Blaster is able to move Horizontally now and fire upon a moving target!
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/MainBase.JPG" width="700" height="500"/>
-<center>Bottom half of the Nerf Sentry for Horizontal Movement</center>
 
 ### Overall System Diagram:
 
