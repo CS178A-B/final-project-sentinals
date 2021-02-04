@@ -82,17 +82,39 @@ The following two are state machines that we are able to implement to some exten
 
 ### Frontend Structure:
 
-Being an embedded system project, we do not have a graphical user interface or anything of that sort. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
+Being an embedded system project, we do not have a graphical user interface or anything of that sort yet. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300"/>
+<center><img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300" /></center>
+<center>Initial 3D Design made in Blender</center>
 
-As of Milestone Two, we have two major components in development: the blaster itself and the base/platform on which the blaster will be mounted on. The platform currently offers horizontal articulation. Below is the blaster, which has not seen much major modifications since Milestone One. Above the blaster is a sketch made when deceloping the base.
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2262.jpg" width="600" height="600"/>
+As of Milestone One, we have two major components in development: the Nerf blaster itself and the base/platform on which the blaster will be mounted on. Below is the dissassembled Nerf blaster with the components needed for it to power ON and fire. We also took away the need for the 6 C batteries needed to power the Blaster and instead attached a Voltage Booster to an AC to DC power supply. Decreasing the overall weight of our Blaster.  
 
-Below is the base, with Eduardo holding what should be the top half of the base on which the blaster will be placed upon. Between the wooden boards are ball-bearings to assist in the rotation of the blaster.
+<center><img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfBlaster.JPG" width="400" height="500"/></center>
+<center>Labeled components on the Nerf Blaster</center>
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2266.jpg" width="600" height="600"/>
+Next, we decided to tackle the Horizontal Movement of the Blaster for Milestone Two. We came up with a few ideas for making the base rotate and finally decided on using ring ball-bearings to assist rotation. A basic servo wouldn't be strong enough to rotate the Blaster efficiently, this is why we decided to attach ball-bearings to assist it. 
+
+We then cut two square pieces of wood that serve as the bread components of a sandwich. We need the boards to sandwich the ball bearings for smooth rotations. 
+
+<center><img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2266.jpg" width="600" height="600"/></center>
+<center>Eduardo holding what should be the top half of the base on which the blaster will be placed upon</center>
+
+After building the base we attached a small sanded wooden block to it with a glue gun and double sided tape. The wooden block is placed in the middle of one of the bearings. Below are pictures of how the base of the Nerf Blaster looks from the bottom part of its base. 
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_1617.jpg" width="200" height="300"/>
+
+Next we decided to build the main base which is what the Nerf Sentry will be planted on. The main base will look similar to an open box. The top of this main base is sandwiched with the base of the Nerf Blaster. 
+
+<center><img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfSentryFront.JPG" width="250" height="300"/><center>
+<center>Front View of the Nerf Sentry</center>
+
+For Milestone Three we organize the components of the Nerf Sentry in a 'nice' fashion so that the wires are not all over the place. The Blaster is able to move Horizontally now and fire upon a moving target!
+
+<center><img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/MainBase.JPG" width="250" height="300"/></center>
+<center>Bottom half of the Nerf Sentry for Horizontal Movement</center>
+
+
 
 ### Overall System Diagram:
 
