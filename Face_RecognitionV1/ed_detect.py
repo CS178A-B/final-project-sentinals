@@ -42,11 +42,6 @@ while True:
         print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
         print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner
     if len(faces) > 0:
-        #print("[INFO] found {0} faces!".format(len(faces)))
-        #GPIO.output(18,GPIO.HIGH)
-        #if x1 >= 250 and x2 <= 500:
-           # print("[INFO] found {0} faces!".format(len(faces)))
-           # GPIO.output(18,GPIO.HIGH)
         if x1 < 200: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
             print("move left")
 #            GPIO.output(18,GPIO.LOW)
@@ -78,9 +73,9 @@ while True:
     fps = 1/(sec)
     str = "FPS : %0.1f" % fps 
     for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
-        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
+        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))
         cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
-    cv2.putText(img, 'Number of Faces Detected: ' + str, (0,  100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
+    cv2.putText(img, str, (0,260), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),2)
     cv2.imshow('img', img) ## Last we show the image
     x = cv2.waitKey(30) & 0xff
     
