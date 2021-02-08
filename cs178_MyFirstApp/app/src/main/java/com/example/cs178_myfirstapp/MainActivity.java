@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 /*public class MainActivity extends AppCompatActivity {
@@ -18,10 +19,20 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.cs128_MyFirstApp.MESSAGE";
+    private Button vid_stream;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vid_stream = findViewById(R.id.video_stream);
+        vid_stream.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openVidStream();
+            }
+        });
     }
 
     //called when user taps send button
@@ -45,5 +56,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
+    public void openVidStream() {
+        Intent intent = new Intent(this, video_stream.class);
+        startActivity(intent);
+    }
 }
