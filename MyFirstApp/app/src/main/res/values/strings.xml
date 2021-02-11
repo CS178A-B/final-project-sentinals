@@ -3,4 +3,5 @@
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="button_notification">Notification</string>
+    <string name="preference_file_key" />
 </resources>
