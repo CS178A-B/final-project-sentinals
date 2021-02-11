@@ -30,26 +30,33 @@ while True:
     # This method only works on gray skin images, so we have to convert the 
     # gray scale to rgb image
     
-    faces = face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
+    faces = face_cascade.detectMultiScale(gray, 1.1, 5) 
 
-    for (x, y, w, h) in faces:  # This will find our coordinates and y
+    #Next, we detect the faces
+    for (x, y, w, h) in faces:  # This will find our coordinates to shape square
+        #x pos top left of square
         x1 = x
+        #x pos top right of square
         x2 = x + w
         maxX = max(x2,maxX)
+        # y pos top left of square
         y1 = y
+        #bottom left point of square
         y2 = y + h
         maxY = max(y2,maxY)
-        print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
+        #top Left corner of square 
+        print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) 
+        #top right and bottom left corners of square
         print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner
     if len(faces) > 0:
-        if x1 < 200: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
-            print("move left")
+        if x1 < 200: # person is  
+            print("move LEFT")
 #            GPIO.output(18,GPIO.LOW)
 #            GPIO.output(23,GPIO.HIGH)
 #            GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 600: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
-            print("move right")
+        elif x2 > 300: # person is 
+            print("move RIGHT")
 #            GPIO.output(18,GPIO.LOW)
 #            GPIO.output(23,GPIO.LOW)
 #            GPIO.output(24,GPIO.HIGH)
