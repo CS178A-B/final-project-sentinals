@@ -2,18 +2,18 @@ import numpy as np
 import cv2
 import time
 import imutils
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setwarnings(False)
-#GPIO.setup(18,GPIO.OUT)
-#GPIO.setup(23,GPIO.OUT)
-#GPIO.setup(24,GPIO.OUT)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18,GPIO.OUT)
+GPIO.setup(23,GPIO.OUT)
+GPIO.setup(24,GPIO.OUT)
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
 
 prevTime = 0
-## This will get our web camera 
+# This will get our web camera 
 cap = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_SIMPLEX
 
@@ -51,28 +51,28 @@ while True:
     if len(faces) > 0:
         if x1 < 200: # person is  
             print("move LEFT")
-#            GPIO.output(18,GPIO.LOW)
-#            GPIO.output(23,GPIO.HIGH)
-#            GPIO.output(24,GPIO.LOW)
+            GPIO.output(18,GPIO.LOW)
+            GPIO.output(23,GPIO.HIGH)
+            GPIO.output(24,GPIO.LOW)
 
         elif x2 > 300: # person is 
             print("move RIGHT")
-#            GPIO.output(18,GPIO.LOW)
-#            GPIO.output(23,GPIO.LOW)
-#            GPIO.output(24,GPIO.HIGH)
+            GPIO.output(18,GPIO.LOW)
+            GPIO.output(23,GPIO.LOW)
+            GPIO.output(24,GPIO.HIGH)
         else:
             #print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
             #Now, we are in the center of the camera, face detected, now shoot.
             print("FIRE! FIRE! FIRE!") 
 
-#            GPIO.output(18,GPIO.HIGH)
-#            GPIO.output(23,GPIO.LOW)
-#            GPIO.output(24,GPIO.LOW)
+            GPIO.output(18,GPIO.HIGH)
+            GPIO.output(23,GPIO.LOW)
+            GPIO.output(24,GPIO.LOW)
     else:
         print("No face") #No person is in scope of the camera so turn off everything
-#        GPIO.output(18,GPIO.LOW)
-#        GPIO.output(23,GPIO.LOW)
-#        GPIO.output(24,GPIO.LOW)
+        GPIO.output(18,GPIO.LOW)
+        GPIO.output(23,GPIO.LOW)
+        GPIO.output(24,GPIO.LOW)
 
     curTime = time.time()
     sec = curTime - prevTime
