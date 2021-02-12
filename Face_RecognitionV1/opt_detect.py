@@ -88,6 +88,9 @@ while True:
     x = cv2.waitKey(30) & 0xff
     
     if x==27:
+        GPIO.output(18,GPIO.LOW)
+        GPIO.output(23,GPIO.LOW)
+        GPIO.output(24,GPIO.LOW)
         break
 ## Press escape to exit the program
 print("Max X pixel # = ",maxX)
