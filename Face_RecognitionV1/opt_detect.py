@@ -55,7 +55,7 @@ while True:
  #          GPIO.output(23,GPIO.HIGH)
 #           GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 300: # person is 
+        elif x2 > 600: # person is 
             print("move RIGHT")
 #            GPIO.output(18,GPIO.LOW)
 #            GPIO.output(23,GPIO.LOW)
@@ -66,8 +66,8 @@ while True:
             print("FIRE! FIRE! FIRE!") 
 
 #            GPIO.output(18,GPIO.HIGH)
-#            GPIO.output(23,GPIO.LOW)
-#            GPIO.output(24,GPIO.LOW)
+#            GPIO.output(23,GPIO.HIGH)
+#            GPIO.output(24,GPIO.HIGH)
     else:
         print("No face") #No person is in scope of the camera so turn off everything
 #        GPIO.output(18,GPIO.LOW)
@@ -83,10 +83,8 @@ while True:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))
         cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
     cv2.putText(img, str, (0,260), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),2)
-#    cv2.namedWindow("main")
 
-#    cv2.resizeWindow("main",1200,800)
-    cv2.imshow("img", img) ## Last we show the image
+    cv2.imshow("Target", img) # Last we show the image
     x = cv2.waitKey(30) & 0xff
     
     if x==27:
