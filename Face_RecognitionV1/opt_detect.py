@@ -24,7 +24,7 @@ while True:
     # This ets each frame from the video, cap.read returns 2 variables flag - 
     # indicate frame is correct and 2nd is 
     _, img = cap.read()                 
-    img = cv2.resize(img, (800,600))
+    img = cv2.resize(img, (400,300))
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   
     # This method only works on gray skin images, so we have to convert the 
@@ -49,13 +49,13 @@ while True:
         #top right and bottom left corners of square
         print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) 
     if len(faces) > 0:
-        if x1 < 400: # person is  
+        if x1 < 200: # person is  
            print("move LEFT")
            GPIO.output(18,GPIO.LOW)
            GPIO.output(23,GPIO.HIGH)
            GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 600: # person is 
+        elif x2 > 300: # person is 
             print("move RIGHT")
             GPIO.output(18,GPIO.LOW)
             GPIO.output(23,GPIO.LOW)
