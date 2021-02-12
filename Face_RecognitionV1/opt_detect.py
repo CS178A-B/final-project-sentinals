@@ -2,13 +2,13 @@ import numpy as np
 import cv2
 import time
 import imutils
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(18,GPIO.OUT)
-GPIO.setup(23,GPIO.OUT)
-GPIO.setup(24,GPIO.OUT)
+#GPIO.setmode(GPIO.BCM)
+#GPIO.setwarnings(False)
+#GPIO.setup(18,GPIO.OUT)
+#GPIO.setup(23,GPIO.OUT)
+#GPIO.setup(24,GPIO.OUT)
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
 
@@ -24,7 +24,7 @@ while True:
     # This ets each frame from the video, cap.read returns 2 variables flag - 
     # indicate frame is correct and 2nd is 
     _, img = cap.read()                 
-    img = cv2.resize(img, None, None, fx=0.25, fy=0.25)
+    img = cv2.resize(img, (800,600))
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   
     # This method only works on gray skin images, so we have to convert the 
@@ -51,28 +51,28 @@ while True:
     if len(faces) > 0:
         if x1 < 200: # person is  
             print("move LEFT")
-            GPIO.output(18,GPIO.LOW)
-            GPIO.output(23,GPIO.HIGH)
-            GPIO.output(24,GPIO.LOW)
+#           GPIO.output(18,GPIO.LOW)
+ #          GPIO.output(23,GPIO.HIGH)
+#           GPIO.output(24,GPIO.LOW)
 
         elif x2 > 300: # person is 
             print("move RIGHT")
-            GPIO.output(18,GPIO.LOW)
-            GPIO.output(23,GPIO.LOW)
-            GPIO.output(24,GPIO.HIGH)
+#            GPIO.output(18,GPIO.LOW)
+#            GPIO.output(23,GPIO.LOW)
+#            GPIO.output(24,GPIO.HIGH)
         else:
             #print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
             #Now, we are in the center of the camera, face detected, now shoot.
             print("FIRE! FIRE! FIRE!") 
 
-            GPIO.output(18,GPIO.HIGH)
-            GPIO.output(23,GPIO.LOW)
-            GPIO.output(24,GPIO.LOW)
+#            GPIO.output(18,GPIO.HIGH)
+#            GPIO.output(23,GPIO.LOW)
+#            GPIO.output(24,GPIO.LOW)
     else:
         print("No face") #No person is in scope of the camera so turn off everything
-        GPIO.output(18,GPIO.LOW)
-        GPIO.output(23,GPIO.LOW)
-        GPIO.output(24,GPIO.LOW)
+#        GPIO.output(18,GPIO.LOW)
+#        GPIO.output(23,GPIO.LOW)
+#        GPIO.output(24,GPIO.LOW)
 
     curTime = time.time()
     sec = curTime - prevTime
@@ -83,7 +83,10 @@ while True:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))
         cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
     cv2.putText(img, str, (0,260), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),2)
-    cv2.imshow('img', img) ## Last we show the image
+#    cv2.namedWindow("main")
+
+#    cv2.resizeWindow("main",1200,800)
+    cv2.imshow("img", img) ## Last we show the image
     x = cv2.waitKey(30) & 0xff
     
     if x==27:
