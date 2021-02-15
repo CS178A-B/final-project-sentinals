@@ -33,4 +33,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+
+    implementation 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer-core:r2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:r.2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:r.2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:r.2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:r.2.4.0'
+
+    compile 'com.devbrackets.android:exomedia:3.0.5'
 }

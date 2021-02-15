@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".video_stream">
+    android:orientation="vertical"
+    tools:context=".video_activity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wip"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center_horizontal"
+        android:autoLink="web"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/addr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://192.168.xxx.xxx:xxxx" />
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connect" />
+    <!--<VideoView
+        android:id="@+id/streamview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /> -->
+    <WebView
+        android:id="@+id/webview_stream"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/exovideo_stream"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />-->
+    <!-- <com.devbrackets.android.exomedia.ui.widget.EMVideoView
+        android:id="@+id/em_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        /> -->
 
-</RelativeLayout>
+</LinearLayout>
