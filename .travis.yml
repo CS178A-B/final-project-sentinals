@@ -1,4 +1,4 @@
-script: android_script.sh
+#script: android_script.sh
 language: android
 dist: trusty
 android:
