@@ -1,4 +1,8 @@
 #script: android_script.sh
+addons:
+    apt:
+        packages:
+            ant
 jobs:
     include:
         language: android
