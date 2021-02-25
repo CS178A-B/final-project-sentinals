@@ -2,7 +2,7 @@
 addons:
     apt:
         packages:
-            ant deps
+            ant
 jobs:
     include:
         language: android
