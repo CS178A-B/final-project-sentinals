@@ -59,18 +59,22 @@ while True:
         y4 = y+h
 
     if len(faces) > 0:
-       if x1 < 50: # person is  
+
+       if x1 < 50:
+
            print("move LEFT")
            # GPIO.output(18,GPIO.LOW)
            # GPIO.output(23,GPIO.HIGH)
            # GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 150: # person is
+        elif x2 > 150: 
+
             print("move RIGHT")
             # GPIO.output(18,GPIO.LOW)
             # GPIO.output(23,GPIO.LOW)
             # GPIO.output(24,GPIO.HIGH)
         else:
+
             #print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
             #Now, we are in the center of the camera, face detected, now shoot.
             print("FIRE! FIRE! FIRE!") 
@@ -78,19 +82,24 @@ while True:
             # GPIO.output(18,GPIO.HIGH)
             # GPIO.output(23,GPIO.HIGH)
             # GPIO.output(24,GPIO.HIGH)
+
     elif len(faces2) > 0:
-        if x3 < 50: # person is  
+
+        if x3 < 50: 
+
            print("move LEFT")
            # GPIO.output(18,GPIO.LOW)
            # GPIO.output(23,GPIO.HIGH)
            # GPIO.output(24,GPIO.LOW)
 
-        elif x4 > 150: # person is
+        elif x4 > 150:
+
             print("move RIGHT")
             # GPIO.output(18,GPIO.LOW)
             # GPIO.output(23,GPIO.LOW)
             # GPIO.output(24,GPIO.HIGH)
         else:
+            
             #print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
             #Now, we are in the center of the camera, face detected, now shoot.
             print("FIRE! FIRE! FIRE!") 
