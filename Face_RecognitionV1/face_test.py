@@ -58,20 +58,14 @@ while True:
         y3 = y
         y4 = y+h
 
-    if len(faces) > 0 or len(faces2) > 0:
-        if x1 is None and x2 is None:
-            continue
-        elif x1 is None:
-            x1 = x3
-        elif x3 is None:
-            x3 = x1
-        if x1 < 50 or x3 < 50: # person is  
+    if len(faces) > 0:
+       if x1 < 50: # person is  
            print("move LEFT")
            # GPIO.output(18,GPIO.LOW)
            # GPIO.output(23,GPIO.HIGH)
            # GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 150 or x4 > 150: # person is
+        elif x2 > 150: # person is
             print("move RIGHT")
             # GPIO.output(18,GPIO.LOW)
             # GPIO.output(23,GPIO.LOW)
@@ -84,6 +78,27 @@ while True:
             # GPIO.output(18,GPIO.HIGH)
             # GPIO.output(23,GPIO.HIGH)
             # GPIO.output(24,GPIO.HIGH)
+    elif len(faces2) > 0:
+        if x3 < 50: # person is  
+           print("move LEFT")
+           # GPIO.output(18,GPIO.LOW)
+           # GPIO.output(23,GPIO.HIGH)
+           # GPIO.output(24,GPIO.LOW)
+
+        elif x4 > 150: # person is
+            print("move RIGHT")
+            # GPIO.output(18,GPIO.LOW)
+            # GPIO.output(23,GPIO.LOW)
+            # GPIO.output(24,GPIO.HIGH)
+        else:
+            #print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
+            #Now, we are in the center of the camera, face detected, now shoot.
+            print("FIRE! FIRE! FIRE!") 
+
+            # GPIO.output(18,GPIO.HIGH)
+            # GPIO.output(23,GPIO.HIGH)
+            # GPIO.output(24,GPIO.HIGH)
+
     else:
         print("No face") #No person is in scope of the camera so turn off everything
         # GPIO.output(18,GPIO.LOW)
