@@ -6,6 +6,7 @@ addons:
 jobs:
     include:
         language: android
+        jdk: oraclejdk8
         dist: trusty
         before_script:
             - cd MyFirstApp
