@@ -26,7 +26,7 @@ while True:
     # This ets each frame from the video, cap.read returns 2 variables flag - 
     # indicate frame is correct and 2nd is 
     _, img = cap.read()                 
-    img = cv2.resize(img, (400,300))
+    img = cv2.resize(img, (200,150))
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   
     # This method only works on gray skin images, so we have to convert the 
@@ -59,13 +59,19 @@ while True:
         y4 = y+h
 
     if len(faces) > 0 or len(faces2) > 0:
-        if x1 < 200 or x3 < 200: # person is  
+        if x1 is None and x2 is None:
+            continue
+        elif x1 is None:
+            x1 = x3
+        elif x3 is None:
+            x3 = x1
+        if x1 < 50 or x3 < 50: # person is  
            print("move LEFT")
            # GPIO.output(18,GPIO.LOW)
            # GPIO.output(23,GPIO.HIGH)
            # GPIO.output(24,GPIO.LOW)
 
-        elif x2 > 300 or x4 > 300: # person is
+        elif x2 > 150 or x4 > 150: # person is
             print("move RIGHT")
             # GPIO.output(18,GPIO.LOW)
             # GPIO.output(23,GPIO.LOW)
