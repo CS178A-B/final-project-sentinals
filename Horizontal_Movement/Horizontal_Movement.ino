@@ -76,7 +76,7 @@ void SM_H_Motor(bool reset = false)
 {
   //states
   static enum {START, STOP, LEFT, WAIT_LEFT, RIGHT, WAIT_RIGHT} state = START;
-  const uint32_t MOTOR_DELAY = 7; //1 ms
+  const uint32_t MOTOR_DELAY = 90; //90 ms delay 
   static uint32_t h_Time = 0; //time for motor delay
 
   //on reset
