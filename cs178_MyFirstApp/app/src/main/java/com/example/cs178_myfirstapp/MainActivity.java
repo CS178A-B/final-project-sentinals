@@ -20,6 +20,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.cs128_MyFirstApp.MESSAGE";
     private Button vid_stream;
+    private Button tcp_sample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openVidStream();
+            }
+        });
+
+        tcp_sample = findViewById(R.id.tcp);
+        tcp_sample.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTCP();
             }
         });
     }
@@ -58,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openVidStream() {
         Intent intent = new Intent(this, video_stream.class);
+        startActivity(intent);
+    }
+
+    public void openTCP() {
+        Intent intent = new Intent(this, TCP.class);
         startActivity(intent);
     }
 }

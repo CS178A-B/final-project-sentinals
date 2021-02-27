@@ -41,5 +41,5 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:r.2.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:r.2.4.0'
 
-    compile 'com.devbrackets.android:exomedia:3.0.5'
+    implementation 'com.devbrackets.android:exomedia:3.0.5'
 }
