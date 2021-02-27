@@ -29,8 +29,8 @@ while True:
             a = pickle.dumps(frame)
             message = struct.pack("Q",len(a))+a
             client_socket.sendall(message)
-            cv2.imshow('TRANSMITTING VIDEO',frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                    vid.release()
-                    client_socket.close()
-                    break
+        #    cv2.imshow('TRANSMITTING VIDEO',frame)
+        #    if cv2.waitKey(1) & 0xFF == ord('q'):
+        #            vid.release()
+        #            client_socket.close()
+        #            break
