@@ -1,14 +1,17 @@
 import socket
 
-host = '' #insert target ip address or where server.py is running
-port = 9000
+host = '192.168.1.15' #insert target ip address or where server.py is running
+port = 8840
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host, port))
 
 while True:
-    command = input("what is thy bidding: ")
-    if command == 'EXIT':
+    command = 'GET'
+    if command == 'GET':
+            command = input("what is thy bidding: ")
+            s.send(str.encode(command))
+    elif command == 'EXIT':
         #send exit signal to other end
         s.send(str.encode(command))
         break
