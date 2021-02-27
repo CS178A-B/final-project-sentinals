@@ -28,6 +28,13 @@ ADD_EXECUTABLE(Horizontal_Test.out
     "Mock_Libraries/Mock_Servo.cpp"
     )
 
+ADD_EXECUTABLE(Horizontal_Test_Sensor.out
+    "Test_Files/horizontal_test_sensor.cpp"
+    "Mock_Libraries/Mock_Time.cpp"
+    "Mock_Libraries/Mock_Functions.cpp"
+    "Mock_Libraries/Mock_Servo.cpp"
+    )
+
 ADD_EXECUTABLE(Movement_Test.out
     "Test_Files/Movement_Test.cpp"
     "Mock_Libraries/Mock_Time.cpp"
