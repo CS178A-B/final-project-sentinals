@@ -4,14 +4,20 @@ Usage:
    python server.py
 """
 
+import numpy as np
 import base64
 import time
 import cv2
 import coils
 import redis
+import pandas as pd
 from tornado import websocket, web, ioloop
-
+#from io import StringIO 
+from io import BytesIO
 MAX_FPS = 100
+
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
+
 
 class IndexHandler(web.RequestHandler):
     """ Handler for the root static page. """
@@ -39,13 +45,79 @@ class SocketHandler(websocket.WebSocketHandler):
             if image_id != self._prev_image_id:
                 break
         self._prev_image_id = image_id
-        image = self._store.get('image')
-        image = base64.b64encode(image)
-        self.write_message(image)
+        image_byte = self._store.get('image')
+       # s = str(image)
+       # image = StringIO(s)
+        image = np.frombuffer(image_byte, dtype=np.uint8)
+        image = image.reshape(len(image), 1)
+       # df=pd.DataFrame(image)
+       # print(df.shape)
+       # image = base64.b64encode(image)
+        #try: 
+        coeffs = np.array([0.114, 0.587, 0.229])
+        coeffs = coeffs.reshape(1, 3)
+       # print(coeffs.shape)
+        images_gray = np.matmul(image.astype(np.float), coeffs).sum(axis=-1)
+        images_gray = images_gray.astype(np.uint8)
 
+            # This is required for opencv. Face recognition code below.
+        faces = face_cascade.detectMultiScale(images_gray, 1.1, 5) ## Next, we detect the faces
+
+        for (x, y, w, h) in faces:  # This will find our coordinates and y
+            x1 = x
+            x2 = x + w
+            y1 = y
+            y2 = y + h
+            print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
+            print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner
+        if len(faces) > 0:
+            #print("[INFO] found {0} faces!".format(len(faces)))
+            #GPIO.output(18,GPIO.HIGH)
+            #if x1 >= 250 and x2 <= 500:
+                # print("[INFO] found {0} faces!".format(len(faces)))
+                # GPIO.output(18,GPIO.HIGH)
+            if x1 < 200: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
+                print("move left")
+            #          GPIO.output(18,GPIO.LOW)
+            #          GPIO.output(23,GPIO.HIGH)
+            #          GPIO.output(24,GPIO.LOW)
+
+            elif x2 > 600: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
+                print("move right")
+            #          GPIO.output(18,GPIO.LOW)
+            #          GPIO.output(23,GPIO.LOW)
+            #          GPIO.output(24,GPIO.HIGH)
+            else:
+                print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
+            #          GPIO.output(18,GPIO.HIGH)
+            #          GPIO.output(23,GPIO.LOW)
+            #          GPIO.output(24,GPIO.LOW)
+        else:
+            print("No face") #No person is in scope of the camera so turn off everything
+            #      GPIO.output(18,GPIO.LOW)
+            #      GPIO.output(23,GPIO.LOW)
+            #      GPIO.output(24,GPIO.LOW)
+
+        #    curTime = time.time()
+        #    sec = curTime - prevTime
+        #    prevTime = curTime
+        #    fps = 1/(sec)
+        #    str_1 = "FPS : %0.1f" % fps 
+            for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
+                cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
+                cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
+           # cv2.putText(image, 'Number of Faces Detected: ' + str, (0,  100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
+            #cv2.imshow('img', frame) ## Last we show the image
+            x = cv2.waitKey(30) & 0xff
+            image_byte = base64.b64encode(image_byte)
+            self.write_message(image_byte)
+        #except ValueError:
+        #    print("nothing")
+        
+       # self.write_message(image)
         # Print object ID and the framerate.
-        text = '{} {:.2f}, {:.2f}, {:.2f} fps'.format(id(self), *self._fps.tick())
-        print(text)
+            text = '{} {:.2f}, {:.2f}, {:.2f} fps'.format(id(self), *self._fps.tick())
+            print(text)
 
 app = web.Application([
     (r'/', IndexHandler),

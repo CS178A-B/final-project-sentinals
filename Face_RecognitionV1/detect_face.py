@@ -58,6 +58,7 @@ while True:
         continue
     retval, frame = cv2.imencode('.jpg', frame)
     value = np.array(frame).tobytes()
+   # print(np.array(frame).dtype)
     store.set('image', value)
     image_id = os.urandom(4)
     store.set('image_id', image_id)
@@ -77,6 +78,7 @@ while True:
     coeffs = np.array([0.114, 0.587, 0.229])
     images_gray = (frame.astype(np.float) * coeffs).sum(axis=-1)
     images_gray = images_gray.astype(frame.dtype)
+    #print(images_gray.dtype)
     faces = face_cascade.detectMultiScale(images_gray, 1.1, 5) ## Next, we detect the faces
 
     for (x, y, w, h) in faces:  # This will find our coordinates and y
