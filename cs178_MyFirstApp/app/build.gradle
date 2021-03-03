@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.1"
@@ -42,4 +44,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-ui:r.2.4.0'
 
     implementation 'com.devbrackets.android:exomedia:3.0.5'
+
+    implementation platform('com.google.firebase:firebase-bom:26.6.0')
+    implementation 'com.google.firebase:firebase-messaging'
 }
