@@ -46,18 +46,13 @@ class SocketHandler(websocket.WebSocketHandler):
                 break
         self._prev_image_id = image_id
         image_byte = self._store.get('image')
-       # s = str(image)
-       # image = StringIO(s)
-        image = np.frombuffer(image_byte, dtype=np.uint8)
-        image = image.reshape(len(image), 1)
-       # df=pd.DataFrame(image)
+        image = np.frombuffer(image_byte, dtype=np.uint8)  ## Interpret a buffer as a 1-dimensional array.
+        image = image.reshape(len(image), 1)  # Gives a new shape to an array without changing its data.
        # print(df.shape)
-       # image = base64.b64encode(image)
-        #try: 
-        coeffs = np.array([0.114, 0.587, 0.229])
-        coeffs = coeffs.reshape(1, 3)
+        coeffs = np.array([0.114, 0.587, 0.229])  ## Creates an array
+        coeffs = coeffs.reshape(1, 3)   # Modifying/reshaping the matrix but keeping the same coefficients
        # print(coeffs.shape)
-        images_gray = np.matmul(image.astype(np.float), coeffs).sum(axis=-1)
+        images_gray = np.matmul(image.astype(np.float), coeffs).sum(axis=-1)  ## grayscale to RGB for the opencv
         images_gray = images_gray.astype(np.uint8)
 
             # This is required for opencv. Face recognition code below.
@@ -104,17 +99,20 @@ class SocketHandler(websocket.WebSocketHandler):
         #    fps = 1/(sec)
         #    str_1 = "FPS : %0.1f" % fps 
             for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
-                cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
-                cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
+                cv2.rectangle(images_gray, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
+                cv2.putText(images_gray, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
            # cv2.putText(image, 'Number of Faces Detected: ' + str, (0,  100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
             #cv2.imshow('img', frame) ## Last we show the image
-            x = cv2.waitKey(30) & 0xff
+
+            # We then have to encode the picture into a jpeg
+            #ret, jpeg = cv2.imencode('.jpg', images_gray)
+            #return jpeg.tobytes()
+           # x = cv2.waitKey(30) & 0xff
+           # image_byte = images_gray.tobytes()      this part very strange
             image_byte = base64.b64encode(image_byte)
             self.write_message(image_byte)
-        #except ValueError:
-        #    print("nothing")
-        
-       # self.write_message(image)
+
+
         # Print object ID and the framerate.
             text = '{} {:.2f}, {:.2f}, {:.2f} fps'.format(id(self), *self._fps.tick())
             print(text)
