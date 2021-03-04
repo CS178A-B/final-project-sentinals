@@ -25,7 +25,8 @@ https://github.com/adarsh1021/facedetection/blob/master/haarcascade_frontalface_
 11. Then go back to step 2 to follow rest of instructions and OpenCV2 should be install through anaconda. (Optional) Make an python environment to save your dependencies, saves time.
 12. Voila! You should be good to run and play around with the facial recognition. (If there is a step missing, then please repeat the process once more. If there is still errors, then type this command: sudo apt-update && sudo apt-upgrade on command line to check your operating system.)
 
-References: https://github.com/adarsh1021/facedetection (used simple python implementation to recognize face)
+References/Sources: https://github.com/adarsh1021/facedetection (used simple python implementation to recognize face)
                                                           https://stackoverflow.com/questions/21596281/how-does-one-convert-a-grayscale-image-to-rgb-in-opencv-python (Used for converting grayscale image to rgb)
 https://pypi.org/project/opencv-python/ (used for to download opencv libraries and commands)
-
+https://github.com/vmlaker/hello-websocket (Used for redis database, server/client and client/server)
+https://quantum-inc.medium.com/remote-video-streaming-with-face-detection-d52ce2d71419 (Helpful for face recognition)
