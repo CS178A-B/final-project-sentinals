@@ -14,6 +14,9 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 #face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
 #face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface_improved.xml')
 #face_cascade = cv2.CascadeClassifier('cascade.xml')
+
+#face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
+
 prevTime = 0
 ## This will get our web camera 
 cap = cv2.VideoCapture(0)
@@ -22,7 +25,7 @@ while True:
     retval, frame = cap.read()
     if not retval:
         break
-    _, img = cap.read()              ## This gets each frame from the video, cap.read returns 2 variables flag - indicate frame is correct and 2nd is f
+    _, img = cap.read()              ## This ets each frame from the video, cap.read returns 2 variables flag - indicate frame is correct and 2nd is f
 
     ##img = cv2.imread('Z.png') Then we get our image we want to use
     #gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   # This method only works on gray skin images, so we have to convert the gray scale to rgb image
@@ -30,6 +33,8 @@ while True:
     images_gray = (frame.astype(np.float) * coeffs).sum(axis=-1)
     images_gray = images_gray.astype(frame.dtype)
     faces = face_cascade.detectMultiScale(images_gray, 1.1, 5) ## Next, we detect the faces
+    
+   # faces = face_cascade.detectMultiScale(gray, 1.1, 5) ## Next, we detect the faces
     for (x, y, w, h) in faces:  # This will find our coordinates and y
         x1 = x
         x2 = x + w
@@ -64,7 +69,6 @@ while True:
     #    GPIO.output(18,GPIO.LOW)
     #    GPIO.output(23,GPIO.LOW)
     #    GPIO.output(24,GPIO.LOW)
-
     curTime = time.time()
     sec = curTime - prevTime
     prevTime = curTime
