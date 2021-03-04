@@ -111,16 +111,16 @@ while True:
 #            GPIO.output(23,GPIO.LOW)
 #            GPIO.output(24,GPIO.LOW)
     else:
-        print("No face") #No person is in scope of the camera so turn off everything
+        #print("No face") #No person is in scope of the camera so turn off everything
 #        GPIO.output(18,GPIO.LOW)
 #        GPIO.output(23,GPIO.LOW)
 #        GPIO.output(24,GPIO.LOW)
 
-    curTime = time.time()
-    sec = curTime - prevTime
-    prevTime = curTime
-    fps = 1/(sec)
-    str = "FPS : %0.1f" % fps 
+        curTime = time.time()
+        sec = curTime - prevTime
+        prevTime = curTime
+        fps = 1/(sec)
+        str = "FPS : %0.1f" % fps 
     for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
         cv2.putText(img, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)

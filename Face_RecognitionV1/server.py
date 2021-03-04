@@ -16,7 +16,7 @@ from tornado import websocket, web, ioloop
 from io import BytesIO
 MAX_FPS = 100
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
 
 
 class IndexHandler(web.RequestHandler):
@@ -34,6 +34,9 @@ class SocketHandler(websocket.WebSocketHandler):
         self._store = redis.Redis()
         self._fps = coils.RateTicker((1, 5, 10))
         self._prev_image_id = None
+
+    def open(self):
+        print("websocket opened")
 
     def on_message(self, message):
         """ Retrieve image ID from database until different from last ID,
@@ -54,7 +57,7 @@ class SocketHandler(websocket.WebSocketHandler):
        # print(coeffs.shape)
         images_gray = np.matmul(image.astype(np.float), coeffs).sum(axis=-1)  ## grayscale to RGB for the opencv
         images_gray = images_gray.astype(np.uint8)
-
+        
             # This is required for opencv. Face recognition code below.
         faces = face_cascade.detectMultiScale(images_gray, 1.1, 5) ## Next, we detect the faces
 
@@ -108,10 +111,9 @@ class SocketHandler(websocket.WebSocketHandler):
             #ret, jpeg = cv2.imencode('.jpg', images_gray)
             #return jpeg.tobytes()
            # x = cv2.waitKey(30) & 0xff
-           # image_byte = images_gray.tobytes()      this part very strange
+            #image_byte = images_gray.tobytes()    #  this part very strange
             image_byte = base64.b64encode(image_byte)
             self.write_message(image_byte)
-
 
         # Print object ID and the framerate.
             text = '{} {:.2f}, {:.2f}, {:.2f} fps'.format(id(self), *self._fps.tick())
@@ -119,7 +121,7 @@ class SocketHandler(websocket.WebSocketHandler):
 
 app = web.Application([
     (r'/', IndexHandler),
-    (r'/ws', SocketHandler),
+    (r'/ws', SocketHandler),    
 ])
 
 if __name__ == '__main__':
