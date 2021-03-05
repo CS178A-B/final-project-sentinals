@@ -43,8 +43,9 @@ while True:
 store = redis.Redis()
 
 # Set video dimensions, if given.
-if width: cap.set(3, width)
-if height: cap.set(4, height)
+if width: cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+if height: cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+
 
 # Monitor the framerate at 1s, 5s, 10s intervals.
 fps = coils.RateTicker((1, 5, 10))
@@ -56,7 +57,7 @@ while True:
     if frame is None:
         time.sleep(0.5)
         continue
-    retval, frame = cv2.imencode('.jpg', frame)
+    retval, frame = cv2.imencode('.jpg', frame) # frame is memory buffer of jpg image
     value = np.array(frame).tobytes()
    # print(np.array(frame).dtype)
     store.set('image', value)
@@ -73,12 +74,10 @@ while True:
 #        break
 #    _, img = cap.read()              ## This ets each frame from the video, cap.read returns 2 variables flag - indicate frame is correct and 2nd is f
 
-   # img = cv2.imread('Z.png')
    # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)   # This method only works on gray skin images, so we have to convert the gray scale to rgb image
     coeffs = np.array([0.114, 0.587, 0.229])
     images_gray = (frame.astype(np.float) * coeffs).sum(axis=-1)
     images_gray = images_gray.astype(frame.dtype)
-    #print(images_gray.dtype)
     faces = face_cascade.detectMultiScale(images_gray, 1.1, 5) ## Next, we detect the faces
 
     for (x, y, w, h) in faces:  # This will find our coordinates and y
