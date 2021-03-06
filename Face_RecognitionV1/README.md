@@ -10,6 +10,7 @@ Steps:
 7. Then a video output will appear in the browser. Face is being detected as well
 8. Go back to server.py terminal and it will say in the terminal that face is detected, move left or move right
 
+IMPORTANT: You must run create your virtual environment in this directory with this name venv/. venv/ has to be the virtual environment name.
 
 Requirements:
 1. You need a PC/Desktop that runs on Linux or Download Ubuntu on Windows. Either works.
