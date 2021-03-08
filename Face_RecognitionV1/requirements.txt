@@ -4,12 +4,10 @@ flask==1.1.2
 imutils==0.5.4
 keras==2.4.3
 numpy==1.18.2
-opencv-contrib-python==4.4.0.44
 opencv-python==4.4.0.44
 pandas==1.0.5
 Pillow==7.1.1
 redis==3.4.1
-redis-server==6.0.9
 tornado==6.0.4
 websocket-client==0.57.0
 imageio==2.9.0
