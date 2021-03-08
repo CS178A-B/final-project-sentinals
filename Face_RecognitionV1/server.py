@@ -12,7 +12,6 @@ import coils
 import redis
 import pandas as pd
 from tornado import websocket, web, ioloop
-#from io import StringIO 
 from io import BytesIO
 MAX_FPS = 100
 
@@ -69,7 +68,7 @@ class SocketHandler(websocket.WebSocketHandler):
             y1 = y
             y2 = y + h
             print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
-            print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner
+            print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner 
         if len(faces) > 0:
             #print("[INFO] found {0} faces!".format(len(faces)))
             #GPIO.output(18,GPIO.HIGH)
@@ -77,24 +76,25 @@ class SocketHandler(websocket.WebSocketHandler):
                 # print("[INFO] found {0} faces!".format(len(faces)))
                 # GPIO.output(18,GPIO.HIGH)
             if x1 < 200: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
-                
-                print("move left")
+                self._store.set('move_position', "move left")
             #          GPIO.output(18,GPIO.LOW)
             #          GPIO.output(23,GPIO.HIGH)
             #          GPIO.output(24,GPIO.LOW)
 
             elif x2 > 600: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
-                print("move right")
+                self._store.set('move_position', "move right")
             #          GPIO.output(18,GPIO.LOW)
             #          GPIO.output(23,GPIO.LOW)
             #          GPIO.output(24,GPIO.HIGH)
             else:
-                print("[INFO] found {0} faces!".format(len(faces))) #Now, we are in the center of the camera, face detected, now shoot.
+                self._store.set('move_position', "Found faces")
+
             #          GPIO.output(18,GPIO.HIGH)
             #          GPIO.output(23,GPIO.LOW)
             #          GPIO.output(24,GPIO.LOW)
         else:
-            print("No face") #No person is in scope of the camera so turn off everything
+            self._store.set('move_position', "No Faces")
+
             #      GPIO.output(18,GPIO.LOW)
             #      GPIO.output(23,GPIO.LOW)
             #      GPIO.output(24,GPIO.LOW)

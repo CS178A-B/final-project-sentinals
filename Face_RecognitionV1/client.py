@@ -63,6 +63,8 @@ while True:
     store.set('image', value)
     image_id = os.urandom(4)
     store.set('image_id', image_id)
+    image_position = store.get('move_position') ## Get string informations from server side 
+    print(image_position)   # print move left, right and face detect
 
     # Print the framerate.
    # text = '{:.2f}, {:.2f}, {:.2f} fps'.format(*fps.tick())
@@ -75,6 +77,7 @@ while True:
 #    _, img = cap.read()              ## This ets each frame from the video, cap.read returns 2 variables flag - indicate frame is correct and 2nd is f
 
    # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)   # This method only works on gray skin images, so we have to convert the gray scale to rgb image
+'''
     coeffs = np.array([0.114, 0.587, 0.229])
     images_gray = (frame.astype(np.float) * coeffs).sum(axis=-1)
     images_gray = images_gray.astype(frame.dtype)
@@ -131,3 +134,4 @@ while True:
         break
 ## Press escape to exit the program
 cap.release()
+'''
