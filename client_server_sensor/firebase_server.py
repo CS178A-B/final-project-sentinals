@@ -13,13 +13,13 @@ from firebase_admin import messaging
 #import firebase_messaging
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate("E:\Luccas\Documents\docs_2\UCR Docs\Fall_2020\cs178a\cs178b-notification-firebase-adminsdk-4vs8i-c3e54116ce.json")
+    cred = credentials.Certificate("<INSERT PATH TO SERVICE JSON>")
     firebase_admin.initialize_app(cred)
 
 #default_app = firebase_admin.initialize_app()
 
 # This registration token comes from the client FCM SDKs.
-registration_token = 'cHxxQeyDRFCkB5HrLzs8yx:APA91bGHRtn-eDOZfO4dKp7fHEL_uNIydJmi7-KJN5ScpfKKaAsdwhvznqDShgeAOcBVSIPBjbnwFv2tk_w-bqq49IW9Lx_rjtKewRtN2-HjK-zk5UQd2S5bx8H_63Kp134uyk1B_b2O'
+registration_token = '<INSERT REGISTRATION DEVICE TOKEN HERE>'
 
 # See documentation on defining a message payload.
 message = messaging.Message(
