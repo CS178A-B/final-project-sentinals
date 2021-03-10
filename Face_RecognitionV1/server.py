@@ -78,7 +78,7 @@ class SocketHandler(websocket.WebSocketHandler):
 
         for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
             cv2.rectangle(images_gray, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
-            cv2.putText(images_gray, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)
+            cv2.putText(images_gray, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)    
     
         retval, frame = cv2.imencode('.jpg', images_gray) # frame is memory buffer of jpg image
         value = np.array(frame).tobytes()
