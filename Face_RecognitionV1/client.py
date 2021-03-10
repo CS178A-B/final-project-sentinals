@@ -29,6 +29,8 @@ max_sleep = 5.0
 cur_sleep = 0.1
 while True:
     cap = cv2.VideoCapture(-1)   # Create the opencv webcam
+    cap.set(3,320)
+    cap.set(4,240)
     if cap.isOpened():
         break
     print('not opened, sleeping {}s'.format(cur_sleep))

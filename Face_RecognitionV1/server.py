@@ -49,7 +49,7 @@ class SocketHandler(websocket.WebSocketHandler):
         self._prev_image_id = image_id
         image_byte = self._store.get('image')
         image = np.frombuffer(image_byte, dtype=np.uint8)  ## Interpret a buffer as a 1-dimensional array / turns into np array.
-        images_gray = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
+        images_gray = cv2.imdecode(image, cv2.COLOR_BGR2GRAY)
         
             # This is required for opencv. Face recognition code below.
         faces = face_cascade.detectMultiScale(images_gray, 1.1, 5) ## Next, we detect the faces
