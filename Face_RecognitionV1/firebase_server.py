@@ -13,13 +13,13 @@ from firebase_admin import messaging
 #import firebase_messaging
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate("<INSERT PATH TO SERVICE JSON>")
+    cred = credentials.Certificate()
     firebase_admin.initialize_app(cred)
 
 #default_app = firebase_admin.initialize_app()
 
 # This registration token comes from the client FCM SDKs.
-registration_token = '<INSERT REGISTRATION DEVICE TOKEN HERE>'
+registration_token = ''
 
 # See documentation on defining a message payload.
 message = messaging.Message(
