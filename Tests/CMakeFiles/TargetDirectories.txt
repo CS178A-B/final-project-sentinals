@@ -1,0 +1,3 @@
+/home/kratos/Documents/CS178A/final-project-sentinals/Tests/CMakeFiles/rebuild_cache.dir
+/home/kratos/Documents/CS178A/final-project-sentinals/Tests/CMakeFiles/edit_cache.dir
+/home/kratos/Documents/CS178A/final-project-sentinals/Tests/CMakeFiles/Mock_Time_Test.out.dir
