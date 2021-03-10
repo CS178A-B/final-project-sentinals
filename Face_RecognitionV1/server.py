@@ -1,7 +1,5 @@
 """
-Serve webcam images from a Redis store using Tornado.
-Usage:
-   python server.py
+This will get the webcam image from the redis database from the client side by using Tornado.
 """
 
 import numpy as np
@@ -10,7 +8,6 @@ import time
 import cv2
 import coils
 import redis
-import time
 import pandas as pd
 from tornado import websocket, web, ioloop
 from io import BytesIO
