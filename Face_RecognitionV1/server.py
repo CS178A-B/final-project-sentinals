@@ -10,6 +10,7 @@ import time
 import cv2
 import coils
 import redis
+import time
 import pandas as pd
 from tornado import websocket, web, ioloop
 from io import BytesIO
@@ -75,6 +76,12 @@ class SocketHandler(websocket.WebSocketHandler):
                 self._store.set('move_position', "found faces")
         else:
             self._store.set('move_position', "No Faces")
+
+        curTime = time.time()
+        sec = curTime - prevTime
+        prevTime = curTime
+        fps = 1/(sec)
+        str = "FPS : %0.1f" % fps   
 
         for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
             cv2.rectangle(images_gray, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
