@@ -67,9 +67,9 @@ class SocketHandler(websocket.WebSocketHandler):
             #if x1 >= 250 and x2 <= 500:
                 # print("[INFO] found {0} faces!".format(len(faces)))
                 # GPIO.output(18,GPIO.HIGH)
-            if x1 < 200: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
+            if x1 < 120: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
                 self._store.set('move_position', "move left")
-            elif x2 > 400: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
+            elif x2 > 280: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
                 self._store.set('move_position', "move right")
             else:
                 self._store.set('move_position', "found faces")
