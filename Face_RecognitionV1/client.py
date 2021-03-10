@@ -14,7 +14,7 @@ GPIO.setup(23,GPIO.OUT)
 GPIO.setup(24,GPIO.OUT)
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
-
+noti_flag = 0
 prevTime = 0
 ## This will get our web camera 
 #cap = cv2.VideoCapture(0)
@@ -89,6 +89,7 @@ while True:
             GPIO.output(24,GPIO.HIGH)
         elif image_position == 'found faces':
             print("FIRE!!!") #Now, we are in the center of the camera, face detected, now shoot.
+            exec(open('firebase_server.py').read())
             GPIO.output(18,GPIO.HIGH)
             GPIO.output(23,GPIO.LOW)
             GPIO.output(24,GPIO.LOW)

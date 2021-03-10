@@ -1,6 +1,6 @@
 #import firebase_admin
 #from firebase_admin import auth
-
+import time 
 #default_app = firebase_admin.initialize_app(cred)
 #print(default_app.name)
 
@@ -13,7 +13,7 @@ from firebase_admin import messaging
 #import firebase_messaging
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate()
+    cred = credentials.Certificate("/home/pi/Documents/final-project-sentinals/Face_RecognitionV1/cs178b-notification-firebase-adminsdk-4vs8i-c3e54116ce.json")
     firebase_admin.initialize_app(cred)
 
 #default_app = firebase_admin.initialize_app()
@@ -22,10 +22,11 @@ if not firebase_admin._apps:
 registration_token = ''
 
 # See documentation on defining a message payload.
+
 message = messaging.Message(
     notification=messaging.Notification(
         title='ALERT FROM NERF SENTRY',
-        body='Your Nerf Sentry detected a possible intruder and was signaled to fire.'
+        body='At ' + time.ctime(time.time()) + ', Your Nerf Sentry detected a possible intruder and was signaled to fire.'
     ),
     #data={
     #    'score': '850',
