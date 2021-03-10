@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_my_first_app" default="compile.module.my_first_app">
+  <dirname property="module.my_first_app.basedir" file="${ant.file.module_my_first_app}"/>
+  
+  <property name="module.jdk.home.my_first_app" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.my_first_app" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.my_first_app" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.my_first_app" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="my_first_app.output.dir" value="${module.my_first_app.basedir}/../../build/classes/production/My_First_App"/>
+  <property name="my_first_app.testoutput.dir" value="${module.my_first_app.basedir}/../../build/classes/test/My_First_App"/>
+  
+  <path id="my_first_app.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="my_first_app.module.production.classpath">
+    <path refid="${module.jdk.classpath.my_first_app}"/>
+  </path>
+  
+  <path id="my_first_app.runtime.production.module.classpath">
+    <pathelement location="${my_first_app.output.dir}"/>
+  </path>
+  
+  <path id="my_first_app.module.classpath">
+    <path refid="${module.jdk.classpath.my_first_app}"/>
+    <pathelement location="${my_first_app.output.dir}"/>
+  </path>
+  
+  <path id="my_first_app.runtime.module.classpath">
+    <pathelement location="${my_first_app.testoutput.dir}"/>
+    <pathelement location="${my_first_app.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.my_first_app">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.my_first_app">
+    <patternset refid="excluded.from.module.my_first_app"/>
+  </patternset>
+  
+  
+  <target name="compile.module.my_first_app" depends="compile.module.my_first_app.production,compile.module.my_first_app.tests" description="Compile module My_First_App"/>
+  
+  <target name="compile.module.my_first_app.production" depends="register.custom.compilers" description="Compile module My_First_App; production classes"/>
+  
+  <target name="compile.module.my_first_app.tests" depends="register.custom.compilers,compile.module.my_first_app.production" description="compile module My_First_App; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.my_first_app" description="cleanup module">
+    <delete dir="${my_first_app.output.dir}"/>
+    <delete dir="${my_first_app.testoutput.dir}"/>
+  </target>
+</project>

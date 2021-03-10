@@ -31,41 +31,6 @@ For the sentry blaster, a servo is used to feed ammunition into the flywheel to 
 
 At the moment, we have two Arduinos for the blaster, where one operates the servo that feeds ammo into the flywheel system and the other powers the flywheel system.
 
-<!--In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
--->
 ## Diagrams
 
 ### Sequence Diagram:
@@ -82,17 +47,32 @@ The following two are state machines that we are able to implement to some exten
 
 ### Frontend Structure:
 
-Being an embedded system project, we do not have a graphical user interface or anything of that sort. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
+Being an embedded system project, we do not have a graphical user interface or anything of that sort yet. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300" />
 
-As of Milestone Two, we have two major components in development: the blaster itself and the base/platform on which the blaster will be mounted on. The platform currently offers horizontal articulation. Below is the blaster, which has not seen much major modifications since Milestone One. Above the blaster is a sketch made when deceloping the base.
+As of Milestone One, we have two major components in development: the Nerf blaster itself and the base/platform on which the blaster will be mounted on. Below is the dissassembled Nerf blaster with the components needed for it to power ON and fire. We also took away the need for the 6 C batteries needed to power the Blaster and instead attached a Voltage Booster to an AC to DC power supply. Decreasing the overall weight of our Blaster.  
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2262.jpg" width="600" height="600"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfBlasterBase.JPG" width="700" height="500"/>
 
-Below is the base, with Eduardo holding what should be the top half of the base on which the blaster will be placed upon. Between the wooden boards are ball-bearings to assist in the rotation of the blaster.
+Next, we decided to tackle the Horizontal Movement of the Blaster for Milestone Two. We came up with a few ideas for making the base rotate and finally decided on using ring ball-bearings to assist rotation. A basic servo wouldn't be strong enough to rotate the Blaster efficiently, this is why we decided to attach ball-bearings to assist it. 
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2266.jpg" width="600" height="600"/>
+We then cut two square pieces of wood that serve as the bread components of a sandwich. We need the boards to sandwich the ball bearings for smooth rotations. 
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2266.jpg" width="500" height="500"/>
+<center>Eduardo holding what should be the top half of the base on which the blaster will be placed upon</center>
+
+After building the base we attached a small sanded wooden block to it with a glue gun and double sided tape. The wooden block is placed in the middle of one of the bearings. Below are pictures of how the base of the Nerf Blaster looks from the bottom part of its base. 
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_1617.JPG" width="500" height="500"/>
+
+Next we decided to build the main base which is what the Nerf Sentry will be planted on. The main base will look similar to an open box. The top of this main base is sandwiched with the base of the Nerf Blaster. 
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfSentryFrontJPG.JPG" width="700" height="500"/>
+
+For Milestone Three we organize the components of the Nerf Sentry in a 'nice' fashion so that the wires are not all over the place. The Blaster is able to move Horizontally now and fire upon a moving target!
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/MainBase.JPG" width="700" height="500"/>
 
 ### Overall System Diagram:
 
