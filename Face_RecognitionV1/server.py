@@ -17,6 +17,7 @@ from io import BytesIO
 MAX_FPS = 100
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
+
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 class IndexHandler(web.RequestHandler):
@@ -41,6 +42,7 @@ class SocketHandler(websocket.WebSocketHandler):
     def on_message(self, message):
         """ Retrieve image ID from database until different from last ID,
         then retrieve image, de-serialize, encode and send to client. """
+        notif_flag = 0
 
         while True:
             time.sleep(1./MAX_FPS)
@@ -70,23 +72,24 @@ class SocketHandler(websocket.WebSocketHandler):
                 # GPIO.output(18,GPIO.HIGH)
             if x1 < 120: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
                 self._store.set('move_position', "move left")
+                notif_flag = 0
             elif x2 > 280: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
                 self._store.set('move_position', "move right")
+                notif_flag = 0
             else:
                 self._store.set('move_position', "found faces")
+                if notif_flag == 0:
+                    exec(open('firebase_server.py').read())
+                    notif_flag = 1
         else:
             self._store.set('move_position', "No Faces")
+            notif_flag = 0
 
-        curTime = time.time()
-        sec = curTime - prevTime
-        prevTime = curTime
-        fps = 1/(sec)
-        str = "FPS : %0.1f" % fps   
 
         for (x, y, w, h) in faces:   ## We draw a rectangle around the faces so we can see it correctly
             cv2.rectangle(images_gray, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
             cv2.putText(images_gray, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)    
-            cv2.putText(img, str, (0,260), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),2)
+           # cv2.putText(images_gray, str(*self._fps.tick()), (0,260), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),2)
     
         retval, frame = cv2.imencode('.jpg', images_gray) # frame is memory buffer of jpg image
         value = np.array(frame).tobytes()
