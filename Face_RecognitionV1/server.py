@@ -64,11 +64,12 @@ class SocketHandler(websocket.WebSocketHandler):
 
         for (x, y, w, h) in faces:  # This will find our coordinates and y
             x1 = x
+            #self._store.set('coor', x)
             x2 = x + w
             y1 = y
             y2 = y + h
-            print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
-            print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner 
+          #  print("diagonal point 1(x1, y1) = ({},{})".format(x1, y1)) # This would be top left corner 
+          #  print("diagonal point 2(x2, y2) = ({},{})".format(x2, y2)) # This would be top right corner 
         if len(faces) > 0:
             #print("[INFO] found {0} faces!".format(len(faces)))
             #GPIO.output(18,GPIO.HIGH)
@@ -81,13 +82,13 @@ class SocketHandler(websocket.WebSocketHandler):
             #          GPIO.output(23,GPIO.HIGH)
             #          GPIO.output(24,GPIO.LOW)
 
-            elif x2 > 600: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
+            elif x2 > 400: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
                 self._store.set('move_position', "move right")
             #          GPIO.output(18,GPIO.LOW)
             #          GPIO.output(23,GPIO.LOW)
             #          GPIO.output(24,GPIO.HIGH)
             else:
-                self._store.set('move_position', "Found faces")
+                self._store.set('move_position', "found faces")
 
             #          GPIO.output(18,GPIO.HIGH)
             #          GPIO.output(23,GPIO.LOW)
@@ -114,7 +115,6 @@ class SocketHandler(websocket.WebSocketHandler):
        # x = cv2.waitKey(30) & 0xff
         retval, frame = cv2.imencode('.jpg', images_gray) # frame is memory buffer of jpg image
         value = np.array(frame).tobytes()
-        #image_byte = images_gray.tobytes()    #  this part very strange
         image_byte = base64.b64encode(value)
         self.write_message(image_byte)
 
