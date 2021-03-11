@@ -11,6 +11,7 @@ import redis
 import pandas as pd
 from tornado import websocket, web, ioloop
 from io import BytesIO
+
 MAX_FPS = 100
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
@@ -67,16 +68,16 @@ class SocketHandler(websocket.WebSocketHandler):
             #if x1 >= 250 and x2 <= 500:
                 # print("[INFO] found {0} faces!".format(len(faces)))
                 # GPIO.output(18,GPIO.HIGH)
-            if x1 < 120: # If our x coordinates is less than 225, then we move our face more left to the center, so  our face gets recognize
+            if x1 < 169: 
                 self._store.set('move_position', "move left")
-                notif_flag = 0
-            elif x2 > 280: #if our x coordinates is greater than 475, then we move our face more right to the center, so our face gets recognize
+                notif_flag = 1
+            elif x2 > 253: 
                 self._store.set('move_position', "move right")
-                notif_flag = 0
+                notif_flag = 1
             else:
                 self._store.set('move_position', "found faces")
                 if notif_flag == 0:
-                    exec(open('firebase_server.py').read())
+                   # exec(open('firebase_server.py').read())
                     notif_flag = 1
         else:
             self._store.set('move_position', "No Faces")
@@ -87,7 +88,7 @@ class SocketHandler(websocket.WebSocketHandler):
             cv2.rectangle(images_gray, (x, y), (x+w, y+h), (255, 0, 0))         ## The faces will be a list of coordinates
             cv2.putText(images_gray, 'Myface', (x, y), font, fontScale=1, color=(255,70,120),thickness=2)    
            # cv2.putText(images_gray, str(*self._fps.tick()), (0,260), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),2)
-    
+        
         retval, frame = cv2.imencode('.jpg', images_gray) # frame is memory buffer of jpg image
         value = np.array(frame).tobytes()
         image_byte = base64.b64encode(value)
@@ -98,7 +99,7 @@ class SocketHandler(websocket.WebSocketHandler):
     # Print object ID and the framerate.
         text = '{} {:.2f}, {:.2f}, {:.2f} fps'.format(id(self), *self._fps.tick())
         print(text)
-
+    
 app = web.Application([
     (r'/', IndexHandler),
     (r'/ws', SocketHandler),    
@@ -107,3 +108,4 @@ app = web.Application([
 if __name__ == '__main__':
     app.listen(9000)
     ioloop.IOLoop.instance().start()
+    
