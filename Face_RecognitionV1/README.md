@@ -1,4 +1,4 @@
-# How to run Facial Recognition with server and client
+# How to run Facial Recognition with server and client. (Socket Programming and Tornado Being used)
    To run on Raspberry pi, Follow these Steps
 Steps:
 1. First Open Command Line
