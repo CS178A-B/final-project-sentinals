@@ -44,7 +44,7 @@ while True:
     cur_sleep = 0.1
 
 # This creates a client to the Redis store, database.
-store = redis.Redis(host='', port=6379) #Put your machine laptop/desktop IP address
+store = redis.Redis(host='<insert IP address>', port=6379) #Insert IP address here
 
 # Set video dimensions, if given.
 if width: cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
