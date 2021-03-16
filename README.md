@@ -20,7 +20,9 @@ Our project is an embedded system implementation that utilizes microcontrollers,
 <a href="https://github.com/LukeTheChang" target="_blank"><img src="https://avatars3.githubusercontent.com/u/43716206?s=400&v=4" align="left" height="30px">Luccas Chang </a>
 
 ## Usage
-Demo: <Link to youtube video>
+Demo:
+
+[![Demo](https://img.youtube.com/vi/DEM7JmdwIdw/0.jpg)](https://www.youtube.com/watch?v=DEM7JmdwIdw)
 
 <Screenshot of application>
 
