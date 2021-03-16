@@ -1,12 +1,11 @@
 # How to run Facial Recognition with server and client.
 
 Server Side: 
-Steps: 
 1. Open Command Line
 2. cd into final-project-sentinals/Face-RecognitionV1/
 3. Run python server.py
-Client Side Raspberry pi, Follow these Steps
-Steps:
+
+Client Side on Raspberry pi: 
 1. First Open Command Line
 2. Type cd wherever you save it on you computer i.e Desktop, Documents, etc.
 3. Then cd into Face_RecognitionV1
