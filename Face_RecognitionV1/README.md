@@ -1,15 +1,21 @@
-# How to run Facial Recognition with server and client. (Socket Programming and Tornado Being used)
-   To run on Raspberry pi, Follow these Steps
+# How to run Facial Recognition with server and client.
+
+Server Side: 
+Steps: 
+1. Open Command Line
+2. cd into final-project-sentinals/Face-RecognitionV1/
+3. Run python server.py
+Client Side Raspberry pi, Follow these Steps
 Steps:
 1. First Open Command Line
 2. Type cd wherever you save it on you computer i.e Desktop, Documents, etc.
 3. Then cd into Face_RecognitionV1
-4. Type in one terminal python client.py and in another terminal python server.py
-5. Then open up a broswer i.e. google chrome, Mozilla, Internet Explorer, etc
-6. Type in http://localhost:9000 (port is 9000) or type in IP address of computer http://192.168.x.x:9000 
+4. Type in one terminal python client.py
+5. Then open up a broswer i.e. google chrome, Mozilla, Internet Explorer, etc on preferably laptop/desktop
+6. Type in IP address of computer http://192.168.x.x:9000 
 7. Then a video output will appear in the browser. Face is being detected as well
-8. Go back to server.py terminal and it will say in the terminal that face is detected, move left or move right
-
+8. Go back to client.py terminal and it will say in the terminal that face is detected, move left or move right
+9. Notification is also being sent to firebase as well.
 IMPORTANT: You can run requirements.txt wherever u created your virtual environment. To run requirements.txt, run the command pip install -r requirements.txt in the terminal. It will download all the dependices you need. 
 
 
