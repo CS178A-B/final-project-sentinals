@@ -44,7 +44,7 @@ while True:
     cur_sleep = 0.1
 
 # This creates a client to the Redis store, database.
-store = redis.Redis()
+store = redis.Redis(host='', port=6379) #Put your machine laptop/desktop IP address
 
 # Set video dimensions, if given.
 if width: cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
@@ -70,7 +70,8 @@ try:
         image_id = os.urandom(4)
         store.set('image_id', image_id)
         image_position = store.get('move_position') ## Get string informations from server side
-        image_position = image_position.decode('utf-8')
+        image_position = image_position.decode("utf-8")
+        print(image_position)
         #turn_off = store.get('off')
 
         if image_position:

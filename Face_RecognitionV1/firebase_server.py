@@ -19,7 +19,7 @@ if not firebase_admin._apps:
 #default_app = firebase_admin.initialize_app()
 
 # This registration token comes from the client FCM SDKs.
-registration_token = ''
+registration_token = 'dyhfl2QGQaucZa5dcGzFAu:APA91bEwI9TGrXsxnHJUme1Wfg85r2BGh9cMnsso2otE62yjgXBNAXcmFlxrASd-XjiLs8c-C-3BJ_LJMA9dgLDr3yk1NWyKVKxvk3Egni4aWGMe3JKLEH0DxSXqzE61TV2LSaXRT9p2'
 
 # See documentation on defining a message payload.
 
