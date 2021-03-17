@@ -76,12 +76,11 @@ At around between Milestone Two and Milestone Three, the first half of the secon
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfSentryFrontJPG.JPG" width="700" height="500"/>
 
-For Milestone Three, we organize the components of the Nerf Sentry in a more organized fashion so that the wires are not all over the place and that most of our components are in one place. Milestone Four, around the last half of the second quarter, deals more with being able to implement some form of Android notification and improving the performance of the face recognition, with one issue being improving the framerate. The images below show the project in around the second quartere with labels of some of the notable component, followed by screenshots of the Android app and the notifications it receives.
+For Milestone Three, we place the components of the Nerf Sentry in a more organized fashion so that the wires are not all over the place and that most of our components are in one place. From then to Milestone Four, which is around the last half of the second quarter, deals more with being able to implement some form of Android notification and improving the performance of the face recognition, with one issue being improving the framerate. The images below show the project in around the second quarter with labels on some of the notable components, followed by screenshots of the Android app and the notifications it receives.
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/MainBase.JPG" width="700" height="500"/>
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/app_notification.png" width="200" height="300"/> 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/app_screenshot.png" width="200" height="300"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/app_notification.png" width="200" height="300"/> | <img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/app_screenshot.png" width="200" height="300"/>
 
 
 ## Dependencies
