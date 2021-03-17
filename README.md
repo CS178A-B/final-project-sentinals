@@ -86,6 +86,8 @@ For Milestone Three, we place the components of the Nerf Sentry in a more organi
 ## Dependencies
 Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
 
+Dependencies regarding face recognition and the Android app notification are in the readme in the "Face_RecognitionV1" directory.
+
 Pip Install opencv-python [Documentation](https://pypi.org/project/opencv-python/)
 
 arduino-libraries/servo [Repository](https://github.com/arduino-libraries/Servo) 
