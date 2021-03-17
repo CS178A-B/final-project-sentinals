@@ -8,7 +8,9 @@
 - [Dependencies](#dependencies)
 
 ## Overview
-Our project is an embedded system implementation that utilizes microcontrollers, servos, a camera, and a Nerf blaster. Put together, we have a Nerf Sentry that fires upon detecting the presence of any person.
+Our project is an embedded system implementation that utilizes microcontrollers, servos, a camera, and a Nerf blaster. Put together, we have a Nerf Sentry that can serve as both a surveilance and entertainment device that fires upon detecting the presence of any person without the need of user input like a remote control.
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfSentryFrontJPG.JPG" width="700" height="500"/>
 
 ## Team
 <a href="https://github.com/eduardor626" target="_blank"><img src="https://avatars1.githubusercontent.com/u/33262466?s=400&u=c6b16422f4524bd8951a4989a7c85fbc6c010f84&v=4" align="left" height="30px">Eduardo Rocha</a>
@@ -32,12 +34,7 @@ Demo:
 2. Follow the steps in the readme of the Face_RecognitionV1 directory to set up the face recognition module and app notification side of the project.
 3. Using the Arduino IDE, upload the file named "Horizontal_Movement.ino" from the Horizontal_Movement directory into the Arduino Uno that is labeled "arduino uno r3 - 1" in the overall system diagram below.
 4. Using the Arduino IDE, upload the file named "Motor_Driver.ino" from the Motor_Driver directory into the Arduino Uno that is labeled "arduino uno r3 - 2" in the overall system diagram below.
-
-At this moment, two major components are working independently: the openCV facial recognition and the sentry blaster. For facial recognition, an implementation using openCV2 is stored in a Raspberry Pi. The implementation is able to return footage from a webcam connected to the Raspberry Pi where, if a face is recognized, the implementation outlines a rectangle around the face. 
-
-For the sentry blaster, a servo is used to feed ammunition into the flywheel to commence firing. Originally, in its stock form, this mechanism depends  on trigger pull by the user to allow ammunition to be fed into the flywheel system. The blaster also no longer requires 6 C batteries as required in its stock formation. Instead, we were able hook the flywheel system, the component that actually fires the ammunition, with a power supply.
-
-At the moment, we have two Arduinos for the blaster, where one operates the servo that feeds ammo into the flywheel system and the other powers the flywheel system.
+5. If they are not running, run the "client.py" and "server.py" files from the Face_RecognitionV1 directory. You sentry should not be able to detect any any one facing towards the usb camera.
 
 ## Diagrams
 
