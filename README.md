@@ -27,6 +27,12 @@ Demo:
 <Screenshot of application>
 
 ## How To Run
+
+1. Setup components in the similiar as the [overall system diagram](#overall-system-diagram-with-notable-wirings) under [diagrams](#diagrams). Specific wirings are annotated. For other fields, such as VCC or GND, you can wire them accordingly to your convienience it through a breadboard or through the available ports of an Arduino. 
+2. Follow the steps in the readme of the Face_RecognitionV1 directory to set up the face recognition module and app notification side of the project.
+3. Using the Arduino IDE, upload the file named "Horizontal_Movement.ino" from the Horizontal_Movement directory into the Arduino Uno that is labeled "arduino uno r3 - 1" in the overall system diagram below.
+4. Using the Arduino IDE, upload the file named "Motor_Driver.ino" from the Motor_Driver directory into the Arduino Uno that is labeled "arduino uno r3 - 2" in the overall system diagram below.
+
 At this moment, two major components are working independently: the openCV facial recognition and the sentry blaster. For facial recognition, an implementation using openCV2 is stored in a Raspberry Pi. The implementation is able to return footage from a webcam connected to the Raspberry Pi where, if a face is recognized, the implementation outlines a rectangle around the face. 
 
 For the sentry blaster, a servo is used to feed ammunition into the flywheel to commence firing. Originally, in its stock form, this mechanism depends  on trigger pull by the user to allow ammunition to be fed into the flywheel system. The blaster also no longer requires 6 C batteries as required in its stock formation. Instead, we were able hook the flywheel system, the component that actually fires the ammunition, with a power supply.
@@ -50,7 +56,6 @@ The following two are state machines that we are able to implement to some exten
 * State Machine for Trigger Pulling:
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/Trigger_SM.jpg"/>
-
 
 * State Machine for Firing Signal:
 
