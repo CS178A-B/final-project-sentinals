@@ -1,5 +1,13 @@
 # How to run Facial Recognition with server and client.
 
+App Notification Side:
+1. Install Android Studio in your machine. In a terminal, run "sudo pip install firebase-admin" https://firebase.google.com/docs/admin/setup. In Android Studio, open the project named "cs178_MyFirstApp."
+2. Connect an Android device to your machine and enable debugging.
+3. Make sure the device is selected on Android Studio and run "debug." Doing so will install and run the app on your device.
+4. Check the debug log or console in Android studio. Look for a log that starts with "D/TAG: the token refreshed: ..." Copy the string that follows it, that is your device's unique token.
+5. In the file named "firebase_server.py", assign the token saved in the previous step into the variable named 'registration_token' in line 22.
+6. Copy the path of the 'google-services...json' file and paste that path into the "cred" variable in line 16 of the "firebase_server.py" file. Your 'firebase_server.py' file is now ready to send notification alerts to your specific Android device and your Android device is now ready to receive alerts of an intruder being fired upon.
+
 Server Side: 
 1. Open Command Line
 2. cd into final-project-sentinals/Face-RecognitionV1/
@@ -36,8 +44,11 @@ https://github.com/adarsh1021/facedetection/blob/master/haarcascade_frontalface_
 12. Voila! You should be good to run and play around with the facial recognition. (If there is a step missing, then please repeat the process once more. If there is still errors, then type this command: sudo apt-update && sudo apt-upgrade on command line to check your operating system.)
 
 
-References/Sources: https://github.com/adarsh1021/facedetection (used simple python implementation to recognize face)
-                                                          https://stackoverflow.com/questions/21596281/how-does-one-convert-a-grayscale-image-to-rgb-in-opencv-python (Used for converting grayscale image to rgb)
-https://pypi.org/project/opencv-python/ (used for to download opencv libraries and commands)
-https://github.com/vmlaker/hello-websocket (Used for redis database, server/client and client/server)
-https://quantum-inc.medium.com/remote-video-streaming-with-face-detection-d52ce2d71419 (Helpful for face recognition)
+References/Sources: https://github.com/adarsh1021/facedetection (used simple python implementation to recognize face), 
+                                                          https://stackoverflow.com/questions/21596281/how-does-one-convert-a-grayscale-image-to-rgb-in-opencv-python (Used for converting grayscale image to rgb),
+https://pypi.org/project/opencv-python/ (used for to download opencv libraries and commands), 
+https://github.com/vmlaker/hello-websocket (Used for redis database, server/client and client/server), 
+https://quantum-inc.medium.com/remote-video-streaming-with-face-detection-d52ce2d71419 (Helpful for face recognition), 
+https://firebase.google.com/docs/admin/setup (setup of firebase server), 
+https://firebase.google.com/docs/cloud-messaging/send-message?authuser=0 (sending notification to a specific device), 
+https://firebase.google.com/docs/cloud-messaging/android/client (retrieving a device's token),
