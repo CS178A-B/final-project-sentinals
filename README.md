@@ -39,17 +39,22 @@ At the moment, we have two Arduinos for the blaster, where one operates the serv
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/cs178_nerfboys_wiringdiagram.png"/>
 
-### Sequence Diagram:
+#### State Machines:
 
 The following two are state machines that we are able to implement to some extent
 
-* State Machine Sensor Controller:
+* Horizontal Movement:
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image1.jpg" height="300"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/h_motor_sm.png"/>
 
-* State Machine for Raspberry Pi:
+* State Machine for Trigger Pulling:
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image3.jpg" height="300"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/Trigger_SM.jpg"/>
+
+
+* State Machine for Firing Signal:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/Driver_SM.jpg"/>
 
 ### Frontend Structure:
 
