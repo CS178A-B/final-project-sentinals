@@ -35,6 +35,10 @@ At the moment, we have two Arduinos for the blaster, where one operates the serv
 
 ### Sequence Diagram:
 
+#### Overall System Diagram:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/cs178_nerfboys_wiringdiagram.png" />
+
 The following two are state machines that we are able to implement to some extent
 
 * State Machine Sensor Controller:
@@ -73,10 +77,6 @@ Next we decided to build the main base which is what the Nerf Sentry will be pla
 For Milestone Three we organize the components of the Nerf Sentry in a 'nice' fashion so that the wires are not all over the place. The Blaster is able to move Horizontally now and fire upon a moving target!
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/MainBase.JPG" width="700" height="500"/>
-
-### Overall System Diagram:
-
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/General%20Sentry%20Diagram%20v2.png" width="800" height="500"/>
 
 ## Dependencies
 Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
