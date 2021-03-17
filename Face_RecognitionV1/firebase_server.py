@@ -13,7 +13,7 @@ from firebase_admin import messaging
 #import firebase_messaging
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate("/home/pi/Documents/final-project-sentinals/Face_RecognitionV1/cs178b-notification-firebase-adminsdk-4vs8i-c3e54116ce.json")
+    cred = credentials.Certificate("E:\Luccas\Documents\docs_2\UCR Docs\Fall_2020\cs178a\cs178b-notification-firebase-adminsdk-4vs8i-c3e54116ce.json")
     firebase_admin.initialize_app(cred)
 
 #default_app = firebase_admin.initialize_app()
