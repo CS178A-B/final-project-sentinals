@@ -34,7 +34,7 @@ Demo:
 2. Follow the steps in the readme of the Face_RecognitionV1 directory to set up the face recognition module and app notification side of the project.
 3. Using the Arduino IDE, upload the file named "Horizontal_Movement.ino" from the Horizontal_Movement directory into the Arduino Uno that is labeled "arduino uno r3 - 1" in the overall system diagram below.
 4. Using the Arduino IDE, upload the file named "Motor_Driver.ino" from the Motor_Driver directory into the Arduino Uno that is labeled "arduino uno r3 - 2" in the overall system diagram below.
-5. If they are not running, run the "client.py" and "server.py" files from the Face_RecognitionV1 directory. You sentry should not be able to detect any any one facing towards the usb camera.
+5. If they are not running, run the "client.py" and "server.py" files from the Face_RecognitionV1 directory. You sentry should now be able to detect any any one facing towards the usb camera.
 
 ## Diagrams
 
