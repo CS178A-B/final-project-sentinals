@@ -8,7 +8,9 @@
 - [Dependencies](#dependencies)
 
 ## Overview
-Our project is an embedded system implementation that utilizes microcontrollers, servos, a camera, and a Nerf blaster. Put together, we have a Nerf Sentry that fires upon detecting the presence of any person.
+Our project is an embedded system implementation that utilizes microcontrollers, servos, a camera, and a Nerf blaster. Put together, we have a Nerf Sentry that can serve as both a surveilance and entertainment device that fires upon detecting the presence of any person without the need of user input like a remote control.
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfSentryFrontJPG.JPG" width="700" height="500"/>
 
 ## Team
 <a href="https://github.com/eduardor626" target="_blank"><img src="https://avatars1.githubusercontent.com/u/33262466?s=400&u=c6b16422f4524bd8951a4989a7c85fbc6c010f84&v=4" align="left" height="30px">Eduardo Rocha</a>
@@ -20,20 +22,27 @@ Our project is an embedded system implementation that utilizes microcontrollers,
 <a href="https://github.com/LukeTheChang" target="_blank"><img src="https://avatars3.githubusercontent.com/u/43716206?s=400&v=4" align="left" height="30px">Luccas Chang </a>
 
 ## Usage
-Demo: <Link to youtube video>
+Demo:
+
+[![Demo](https://img.youtube.com/vi/DEM7JmdwIdw/0.jpg)](https://www.youtube.com/watch?v=DEM7JmdwIdw)
 
 <Screenshot of application>
 
 ## How To Run
-At this moment, two major components are working independently: the openCV facial recognition and the sentry blaster. For facial recognition, an implementation using openCV2 is stored in a Raspberry Pi. The implementation is able to return footage from a webcam connected to the Raspberry Pi where, if a face is recognized, the implementation outlines a rectangle around the face. 
 
-For the sentry blaster, a servo is used to feed ammunition into the flywheel to commence firing. Originally, in its stock form, this mechanism depends  on trigger pull by the user to allow ammunition to be fed into the flywheel system. The blaster also no longer requires 6 C batteries as required in its stock formation. Instead, we were able hook the flywheel system, the component that actually fires the ammunition, with a power supply.
-
-At the moment, we have two Arduinos for the blaster, where one operates the servo that feeds ammo into the flywheel system and the other powers the flywheel system.
+1. Setup components in the similiar as the [overall system diagram](#overall-system-diagram-with-notable-wirings) under [diagrams](#diagrams). Specific wirings are annotated. For other fields, such as VCC or GND, you can wire them accordingly to your convienience it through a breadboard or through the available ports of an Arduino. 
+2. Follow the steps in the readme of the Face_RecognitionV1 directory to set up the face recognition module and app notification side of the project.
+3. Using the Arduino IDE, upload the file named "Horizontal_Movement.ino" from the Horizontal_Movement directory into the Arduino Uno that is labeled "arduino uno r3 - 1" in the overall system diagram below.
+4. Using the Arduino IDE, upload the file named "Motor_Driver.ino" from the Motor_Driver directory into the Arduino Uno that is labeled "arduino uno r3 - 2" in the overall system diagram below.
+5. If they are not running, run the "client.py" and "server.py" files from the Face_RecognitionV1 directory. You sentry should now be able to detect any any one facing towards the usb camera.
 
 ## Diagrams
 
-### Sequence Diagram:
+#### Overall System Diagram with Notable Wirings:
+
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/cs178_nerfboys_wiringdiagram.png"/>
+
+#### State Machines:
 
 #### Overall System Diagram:
 
@@ -41,45 +50,50 @@ At the moment, we have two Arduinos for the blaster, where one operates the serv
 
 The following two are state machines that we are able to implement to some extent
 
-* State Machine Sensor Controller:
+* Horizontal Movement:
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image1.jpg" height="300"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/h_motor_sm.png"/>
 
-* State Machine for Raspberry Pi:
+* State Machine for Trigger Pulling:
 
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image3.jpg" height="300"/>
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/Trigger_SM.jpg"/>
 
-### Frontend Structure:
+* State Machine for Firing Signal:
 
-Being an embedded system project, we do not have a graphical user interface or anything of that sort yet. In its place, we have a rendering of what we envisioned for our implementation at the beginning of the quarter.
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/Driver_SM.jpg"/>
+
+### Pictures and Progress:
+
+Being an embedded system project, we do not have a graphical user interface or anything of that sort yet. In its place, we have a rendering of what we envisioned for our implementation at the very beginning of the first quarter.
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/image6.png" width="300" height="300" />
 
-As of Milestone One, we have two major components in development: the Nerf blaster itself and the base/platform on which the blaster will be mounted on. Below is the dissassembled Nerf blaster with the components needed for it to power ON and fire. We also took away the need for the 6 C batteries needed to power the Blaster and instead attached a Voltage Booster to an AC to DC power supply. Decreasing the overall weight of our Blaster.  
+In Milestone One, we have two major components in development: the Nerf blaster itself and the base/platform on which the blaster will be mounted on. Below is the dissassembled Nerf blaster with the components needed for it to power ON and fire. We also took away the need for the 6 C batteries needed to power the Blaster and instead attached a voltage booster to an AC to DC power supply. Decreasing the overall weight of our Blaster.  
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfBlasterBase.JPG" width="700" height="500"/>
 
-Next, we decided to tackle the Horizontal Movement of the Blaster for Milestone Two. We came up with a few ideas for making the base rotate and finally decided on using ring ball-bearings to assist rotation. A basic servo wouldn't be strong enough to rotate the Blaster efficiently, this is why we decided to attach ball-bearings to assist it. 
-
-We then cut two square pieces of wood that serve as the bread components of a sandwich. We need the boards to sandwich the ball bearings for smooth rotations. 
+We begin addressing the need for horizontal movement in Milestone Two, approximately the latter half of the first quarter. What we ended up doing  was cutting a wooden platform on which the blaster will be placed upon. We also cut another wooden board of similar dimensions and cut a hole in the center for a servo to fit through. In between these two wooden boards, we put a metal ring on both boards in which, in between, ball bearings are present. A wooden block is placed above the servo. This configuration assists the servo in moving the blaster above.
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_2266.jpg" width="500" height="500"/>
-<center>Eduardo holding what should be the top half of the base on which the blaster will be placed upon</center>
 
-After building the base we attached a small sanded wooden block to it with a glue gun and double sided tape. The wooden block is placed in the middle of one of the bearings. Below are pictures of how the base of the Nerf Blaster looks from the bottom part of its base. 
-
-<img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/IMG_1617.JPG" width="500" height="500"/>
-
-Next we decided to build the main base which is what the Nerf Sentry will be planted on. The main base will look similar to an open box. The top of this main base is sandwiched with the base of the Nerf Blaster. 
+At around between Milestone Two and Milestone Three, the first half of the second quarter, we decided to build the main base which is what the Nerf Sentry will be planted on. The main base will look similar to an open box. The top of this main base is sandwiched with the base of the Nerf Blaster.
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/NerfSentryFrontJPG.JPG" width="700" height="500"/>
 
-For Milestone Three we organize the components of the Nerf Sentry in a 'nice' fashion so that the wires are not all over the place. The Blaster is able to move Horizontally now and fire upon a moving target!
+For Milestone Three, we place the components of the Nerf Sentry in a more organized fashion so that the wires are not all over the place and that most of our components are in one place. From then to Milestone Four, which is around the last half of the second quarter, deals more with being able to implement some form of Android notification and improving the performance of the face recognition, with one issue being improving the framerate. The images below show the project in around the second quarter with labels on some of the notable components, followed by screenshots of the Android app and the notifications it receives.
 
 <img src="https://github.com/CS178A-B/final-project-sentinals/blob/main/readme_visuals/MainBase.JPG" width="700" height="500"/>
 
+<<<<<<< HEAD
+=======
+<img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/app_notification.png" width="200" height="300"/> | <img src="https://github.com/CS178A-B/final-project-sentinals/blob/Development/readme_visuals/app_screenshot.png" width="200" height="300"/>
+
+
+>>>>>>> Development
 ## Dependencies
 Install Node Package Manager (npm). [Helpful Documentation](https://www.npmjs.com/get-npm)
+
+Dependencies regarding face recognition and the Android app notification are in the readme in the "Face_RecognitionV1" directory.
 
 Pip Install opencv-python [Documentation](https://pypi.org/project/opencv-python/)
 
