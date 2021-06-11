@@ -11,4 +11,4 @@ redis==3.4.1
 tornado==6.0.4
 websocket-client==0.57.0
 imageio==2.9.0
-websockets==8.1
+websockets==9.1
